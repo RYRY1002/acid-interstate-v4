@@ -1,31 +1,29 @@
 /*
- _______ 	_________ 	_______ 	 _______ 	 _
-/  ____ \	\__   __/	/  ___  \	/  ____ \	| |
-| (    \/	   | |   	| |   | |	| |    ||	| |
-| (_____ 	   | |   	| |   | |	| |____||	| |
-\_____  \	   | |   	| |   | |	|  _____)	| |
-      | |	   | |   	| |   | |	| |      	|_|
-/\____| |	   | |   	| |___| |	| |      	 _
-\_______/	   |_|   	\_______/	|/       	(_)
+ _______ _________ _______  _______  _
+(  ____ \\__   __/(  ___  )(  ____ )( )
+| (    \/   ) (   | (   ) || (    )|| |
+| (_____    | |   | |   | || (____)|| |
+(_____  )   | |   | |   | ||  _____)| |
+      ) |   | |   | |   | || (      (_)
+/\____) |   | |   | (___) || )       _
+\_______)   )_(   (_______)|/       (_)
 
-If you are expecting to use this shader as a normal shader, don't.
-It has terrible performance and does not have playablilty in mind at all.
-I mean, you can, but good luck.
+This shader is for use with the Optifine Mod. This shdaer will not work correctly when used with the GLSL Shaders Mod.
+This shdaer was orignally made by MiningGodBruce, and modified heavily by RYRY1002.
 
-This shader is for use with the Optifine Mod. This shader will not work correctly when used with the GLSL Shaders Mod.
-This shader was orignally made by MiningGodBruce, and modified by RYRY1002.
+This shader is super broken, and should not be used for normal play.
+I'm not going to help you if you can't get this shader to work, because I don't care.
 
-Most of the work done for this shader was done by MiningGodBruce.
-Make sure you give him some love.
-https://www.youtube.com/user/MiningGodBruce
+If you want to make a video using this shader, go for it!
+I'm not going to tell you how, but I'm happy for you to make something with it.
 
-And maybe give me some love also.
-(Thanks!)
+Thanks to MiningGodBruce (BruceKnowsHow)
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+
+I'd appreciate if you shared the original video, it's cool when people enjoy it.
+
+Also check out my stuff, I'd appreciate it.
 https://links.riley.technology/
-
-You are free to modify this shader for personal uses however you like! (Do not sell this shader for currency in any way)
-I am not responsible if this shader breaks because you modify it.
-Use at your own risk.
 
 */
 
