@@ -262,7 +262,7 @@ vec2 GetCoord(in vec2 coord)
 }
 
 void acid(inout vec3 position, in vec3 worldPosition) {
-	position.y -= clamp(cameraPosition.x, 50.5, 90.5) - 90.5;		//ascent at beginning of video
+	//position.y -= clamp(cameraPosition.x, 50.5, 90.5) - 90.5;		//ascent at beginning of video
 	position.y += cameraPosition.y - 128.0 - 1.5 * clamp10(cameraPosition.x - 89.5);
 
 	const float speed = 20.0 / 80.0;
