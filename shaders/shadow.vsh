@@ -55,8 +55,6 @@ uniform float frameTimeCounter;
 uniform float sunAngle;
 uniform float far;
 
-out mat3 tbnMatrix;
-
 out vec4 shadowPosition;
 out vec4 vertPosition;
 out vec4 color;
@@ -115,15 +113,7 @@ vec2 GetLightmap() {							//Gets the lightmap from the default lighting engine.
 }
 
 vec4 GetWorldSpacePosition() {
-	return gbufferModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
-}
-
-vec4 GetWorldSpacePositionShadow() {
-	return shadowModelViewInverse * shadowProjectionInverse * ftransform();
-}
-
-vec4 WorldSpaceToProjectedSpace(in vec4 worldSpacePosition) {
-	return gl_ProjectionMatrix * gbufferModelView * worldSpacePosition;
+	return shadowModelViewInverse * gl_ModelViewMatrix * gl_Vertex;
 }
 
 vec4 WorldSpaceToShadowProjection(in vec4 worldSpacePosition) {
@@ -209,105 +199,14 @@ void rotateRad(inout vec2 vector, float degrees) {
 				   sin(degrees),  cos(degrees));
 }
 
-float clamp01(in float x) {
-	return clamp(x, 0.0, 1.0); }
-
-float clamp01(in float x, in float start, in float length) {
-	return clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-float clamp10(in float x) {
-	return 1.0 - clamp(x, 0.0, 1.0); }
-
-float clamp10(in float x, in float start, in float length) {
-	return 1.0 - clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-//These functions are for a linear domain of 0.0-1.0 & have a range of 0.0-1.0
-float powslow(in float x, in float power) {	//linear --> exponentially slow
-	return pow(x, power); }
-
-float powfast(in float x, in float power) {	//linear --> exponentially fast
-	return 1.0 - pow(1.0 - x, power); }
-
-//sinpow functions are just like power functions, but use a mix of exponential and trigonometric interpolation
-float sinpowslow(in float x, in float power) {
-	return 1.0 - pow(sin(pow(1.0 - x, 1.0 / power) * PI / 2.0), power); }
-
-float sinpowfast(in float x, in float power) {
-	return pow(sin(pow(x, 1.0 / power) * PI / 2.0), power); }
-
-float sinpowsharp(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) * 0.5 + sinpowslow(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-float sinpowsmooth(in float x, in float power) {
-	return sinpowslow(clamp01(x * 2.0), power) * 0.5 + sinpowfast(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-//cubesmooth functions have zero slopes at the start & end of their ranges
-float cubesmooth(in float x) {
-	return x * x * (3.0 - 2.0 * x); }
-
-float cubesmoothslow(in float x, in float power) {
-	return pow(x, power - 1.0) * (power - (power - 1.0) * x); }
-
-float cubesmoothfast(in float x, in float power) {
-	return 1.0 - pow(1.0 - x, power - 1.0) * (power - (power - 1.0) * (1.0 - x)); }
-
-
-//U functions take a linear domain 0.0-1.0 and have a range that goes from 0.0 to 1.0 and back to 0.0
-float sinpowsharpU(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) - sinpowslow(clamp01(x * 2.0 - 1.0), power); }
-
-float sinpowfastU(in float x, in float power) {
-	//return cubesmooth(clamp01(x * 2.0 - 1.0)); }
-	return sinpowfast(clamp01(x * power), power) - cubesmooth(clamp01(max(x * power * 2.0 - 1.0, 0.0) / power)); }
+#include "include/animation.glsl"
 
 void rotate(inout vec2 vector, float radians) {
 	vector *= mat2(cos(radians), -sin(radians),
 				   sin(radians),  cos(radians));
 }
 
-
-float CalculateShadowView() {
-	timeAngle = sunAngle * 360.0;
-	pathRotationAngle = sunPathRotation;
-	twistAngle = 0.0;
-
-
-	timeAngle = 50.0;
-	// These manage the Custom Cycle
-	timeAngle += -50.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 3734.0, 4034.0 - 3734.0), 1.0);
-	timeAngle += 85.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 7500.0, 3682.0 - 0.0), 1.0);
-//	timeAngle += 85.0 * sinpowsmooth(clamp01(track, 7500.0, 3682.0 - 0.0), 1.0);
-
-	timeCycle = timeAngle;
-
-	float isNight = abs(sign(float(mod(timeAngle, 360.0) > 180.0) - float(mod(abs(pathRotationAngle) + 90.0, 360.0) > 180.0))); // When they're not both above or below the horizon
-
-	timeAngle = -mod(timeAngle, 180.0) * rad;
-	pathRotationAngle = (mod(pathRotationAngle + 90.0, 180.0) - 90.0) * rad;
-	twistAngle *= rad;
-
-
-	float A = cos(pathRotationAngle);
-	float B = sin(pathRotationAngle);
-	float C = cos(timeAngle);
-	float D = sin(timeAngle);
-	float E = cos(twistAngle);
-	float F = sin(twistAngle);
-
-	shadowView = mat4(
-	-D*E + B*C*F,  -A*F,  C*E + B*D*F, shadowModelView[0].w,
-	        -A*C,    -B,         -A*D, shadowModelView[1].w,
-	 B*C*E + D*F,  -A*E,  B*D*E - C*F, shadowModelView[2].w,
-	 shadowModelView[3]);
-
-	shadowViewInverse = mat4(
-	-E*D + F*B*C,  -C*A,  F*D + E*B*C,  0.0,
-	        -F*A,    -B,         -E*A,  0.0,
-	 F*B*D + E*C,  -A*D,  E*B*D - F*C,  0.0,
-	         0.0,   0.0,          0.0,  1.0);
-
-	return isNight;
-}
+#include "include/CalculateShadowView.glsl"
 
 
 vec2 GetCoord(in vec2 coord)
@@ -555,10 +454,8 @@ void main() {
 	OptifineGlowstoneFix(color.rgb);
 
 
-	vec4 position	= (!gbuffers_shadow ? GetWorldSpacePosition() : GetWorldSpacePositionShadow());
-
-
-
+	vec4 position	= GetWorldSpacePosition();
+	
 	position.y += 130.0;
 
 	worldPosition = position.xyz + cameraPos.xyz;
@@ -580,47 +477,14 @@ void main() {
 
 	preAcidWorldPosition = position.xyz + cameraPos;
 
-	if (!gbuffers_shadow) {
-		tangent  = normalize(at_tangent.xyz);
-		binormal = normalize(-cross(gl_Normal, at_tangent.xyz));
-
-		vec3 tanPos = position.xyz + tangent;
-		vec3 binPos = position.xyz + binormal;
-
-		acid(tanPos, tanPos + cameraPos);
-		acid(binPos, binPos + cameraPos);
-		acid(position.xyz, position.xyz + cameraPos);
-
-		worldPosition		= position.xyz + cameraPos.xyz;
-		playerSpacePosition	= position.xyz;
-
-
-		tangent = tanPos - position.xyz;
-		binormal = binPos - position.xyz;
-		vertNormal = cross(-tangent, binormal);
-
-		tangent    = normalize(gl_NormalMatrix * tangent);
-		binormal   = normalize(gl_NormalMatrix * binormal);
-		vertNormal = normalize(gl_NormalMatrix * vertNormal);
-	}
-
 //	position.y	-= 56.0 * float(worldPosition.x > 6315.5 && (worldPosition.z > 0.5 && worldPosition.z < 257.5 || worldPosition.x > 6571.5));
 	shadowNormal = normalize(gl_NormalMatrix * gl_Normal);
 
-	if (gbuffers_shadow) shadowNormal = normalize((shadowView * shadowModelViewInverse * vec4(gl_NormalMatrix * gl_Normal, 0.0)).xyz);
-	else {
-		position = gbufferModelView * position;
-		position.z += 0.1;
-		position = gbufferModelViewInverse * position;
-	}
+	shadowNormal = normalize((shadowView * shadowModelViewInverse * vec4(gl_NormalMatrix * gl_Normal, 0.0)).xyz);
+	
 
-	gl_Position		= (!gbuffers_shadow ? WorldSpaceToProjectedSpace(position) : BiasShadowProjection(WorldSpaceToShadowProjection(shadowPosition)));
-
-
-	tbnMatrix		= mat3(tangent.x, binormal.x, vertNormal.x,
-						   tangent.y, binormal.y, vertNormal.y,
-						   tangent.z, binormal.z, vertNormal.z);
-
+	gl_Position = BiasShadowProjection(WorldSpaceToShadowProjection(shadowPosition));
+	
 	vertNormal		= normalize(gl_NormalMatrix * gl_Normal);
 
 	collapsedMaterialIDs = CollapseMaterialIDs(materialIDs, 0.0, 0.0, 0.0, 0.0);

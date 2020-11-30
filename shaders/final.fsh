@@ -224,30 +224,7 @@ void TonemapReinhard05(inout vec3 color) {
 	color.rgb = pow(color.rgb, vec3(1.0 / 2.2));
 }
 
-float clamp01(in float x)
-{
-	return clamp(x, 0.0, 1.0);
-}
-
-float clamp01(in float x, in float start, in float length)
-{
-	return clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0);
-}
-
-float clamp10(in float x)
-{
-	return 1.0 - clamp(x, 0.0, 1.0);
-}
-
-float clamp10(in float x, in float start, in float length)
-{
-	return 1.0 - clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0);
-}
-
-float cubesmooth(in float x)
-{
-	return x * x * (3.0 - 2.0 * x);
-}
+#include "include/animation.glsl"
 
 /////////////////////////STRUCTS///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////STRUCTS///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
