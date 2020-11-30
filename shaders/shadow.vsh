@@ -46,8 +46,7 @@ uniform mat4 shadowProjectionInverse;
 uniform mat4 shadowModelView;
 uniform mat4 shadowModelViewInverse;
 
-vec3 cameraPos;
-#define track cameraPos.x
+#define track cameraPosition.x
 uniform vec3 cameraPosition;
 uniform vec3 previousCameraPosition;
 
@@ -449,22 +448,21 @@ void main() {
 	entityID		= mc_Entity.x;
 	vertPosition	= gl_Vertex;
 	vertNormal		= normalize(gl_NormalMatrix * gl_Normal);
-	cameraPos		= cameraPosition  + vec3(0.0, -130.0, 0.0);
 
 	OptifineGlowstoneFix(color.rgb);
 
 
 	vec4 position	= GetWorldSpacePosition();
 	
-	position.y += 130.0;
+	position.y += 0.0;
 
-	worldPosition = position.xyz + cameraPos.xyz;
+	worldPosition = position.xyz + cameraPosition.xyz;
 
 //	position.y += 30.0 * float(worldPosition.x > 6315.5 && (worldPosition.z > 0.5 && worldPosition.z <  257.5 || worldPosition.x > 6571.5));
 //	position.y -= 30.0 * float(worldPosition.x > 8755.5 && (worldPosition.z < 0.5 && worldPosition.z > -256.5 || worldPosition.x > 9011.5));
 
 	shadowPosition	= position;
-	worldPosition	= position.xyz + cameraPos.xyz;
+	worldPosition	= position.xyz + cameraPosition.xyz;
 
 	portal			= 0.0;
 	left			= 0.0;
@@ -475,7 +473,7 @@ void main() {
 	doEuclid(13207.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
 	doEuclid(57000.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
 
-	preAcidWorldPosition = position.xyz + cameraPos;
+	preAcidWorldPosition = position.xyz + cameraPosition;
 
 //	position.y	-= 56.0 * float(worldPosition.x > 6315.5 && (worldPosition.z > 0.5 && worldPosition.z < 257.5 || worldPosition.x > 6571.5));
 	shadowNormal = normalize(gl_NormalMatrix * gl_Normal);
