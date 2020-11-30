@@ -22,3 +22,17 @@ I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
 Also check out my stuff, I'd appreciate it.
 https://links.riley.technology/
+
+## WIP Videos
+
+WIP 6: https://youtu.be/lY2fFAiAAP8
+
+WIP 5: https://youtu.be/KfMLrGUDqCI
+
+WIP 4: https://youtu.be/JAcAGXXNZ-I
+
+WIP 3: https://youtu.be/XyrxbawyBh0
+
+WIP 2: https://youtu.be/GH9BNJ6fVgE
+
+WIP 1: https://youtu.be/2ls9yOUEgXs
