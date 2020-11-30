@@ -1,9 +1,24 @@
 # Acid Interstate V2 Repository
 
-Hey, this is the repo for my video, Acid Interstate V2. When the video is done, I'll make a release containing the world and shader used in the video.
+This is the repository for my video, Acid Interstate V2.
 
-Now I have to give some thanks to people for helping me make this video possible
+When the video comes out, I'll add a release that contains the shader and world used in the video.
 
-* **MiningGodBruce (BruceKnowsHow)**: For creating the shader that this shader is based on, and helping me fix a few bugs and inspire me to continue developing this video.
+## Shader Readme
 
-By the way, this shader is super broken and should not be used for normal play, because it is made specifically for this video and sometimes doesn't work on some computers for no reason. It also doesn't have good performance and it buggy due to Optifine's CamPos issue.
+This shader is for use with the Optifine Mod. This shdaer will not work correctly when used with the GLSL Shaders Mod.
+This shdaer was orignally made by MiningGodBruce, and modified heavily by RYRY1002.
+
+This shader is super broken, and should not be used for normal play.
+I'm not going to help you if you can't get this shader to work, because I don't care.
+
+If you want to make a video using this shader, go for it!
+I'm not going to tell you how, but I'm happy for you to make something with it.
+
+Thanks to MiningGodBruce (BruceKnowsHow)
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+
+I'd appreciate if you shared the original video, it's cool when people enjoy it.
+
+Also check out my stuff, I'd appreciate it.
+https://links.riley.technology/
