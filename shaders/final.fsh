@@ -591,7 +591,7 @@ vec3 CloudPlane(in vec4 viewSpacePosition, in float fogFactor) {
 	float sunglow = CalculateSunglow(viewSpacePosition);
 
 
-	float cloudsAltitude = 540.0 + 129.0 + 64.0;
+	float cloudsAltitude = 410.0 + 129.0 + 64.0;
 	float cloudsThickness = 150.0;
 
 	float cloudsUpperLimit = cloudsAltitude + cloudsThickness * 0.5;
