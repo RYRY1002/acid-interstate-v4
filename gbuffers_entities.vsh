@@ -18,7 +18,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to MiningGodBruce (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -69,7 +69,7 @@ out float fogEnabled;
 out float waterMask;
 out float entityID;
 
-const float pi = 3.14159265;
+const float PI = 3.1415926535;
 const float rad = 0.01745329;
 
 
@@ -209,10 +209,10 @@ float powfast(in float x, in float power) {	//linear --> exponentially fast
 
 //sinpow functions are just like power functions, but use a mix of exponential and trigonometric interpolation
 float sinpowslow(in float x, in float power) {
-	return 1.0 - pow(sin(pow(1.0 - x, 1.0 / power) * pi / 2.0), power); }
+	return 1.0 - pow(sin(pow(1.0 - x, 1.0 / power) * PI / 2.0), power); }
 
 float sinpowfast(in float x, in float power) {
-	return pow(sin(pow(x, 1.0 / power) * pi / 2.0), power); }
+	return pow(sin(pow(x, 1.0 / power) * PI / 2.0), power); }
 
 float sinpowsharp(in float x, in float power) {
 	return sinpowfast(clamp01(x * 2.0), power) * 0.5 + sinpowslow(clamp01(x * 2.0 - 1.0), power) * 0.5; }
@@ -337,7 +337,22 @@ void acid(inout vec3 position, in vec3 worldPosition)
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 2961.7, 3013.5 - 2961.7), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 3141.9, 3194.5 - 3141.9), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 3324.7, 3376.3 - 3324.7), 1.0);
-	intensity += 1.0 * sinpowfast (clamp01(track, 3557.7, 35.0), 2.0);
+
+	intensity += 1.0 * sinpowsharp(clamp01(track, 9046.3, 9070.3 - 9046.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9064.3, 9116.3 - 9064.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9178.3, 9230.3 - 9178.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9246.3, 9298.3 - 9246.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9362.3, 9414.3 - 9362.3), 1.0);
+
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9428.3, 9480.3 - 9428.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9726.3, 9778.3 - 9726.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9794.3, 9846.3 - 9794.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9908.3, 9960.3 - 9908.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9976.3, 10028.3 - 9976.3), 1.0);
+
+	intensity += 2.0 * sinpowsharp(clamp01(track, 10091.3, 10143.3 - 10091.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 10160.3, 10212.3 - 10160.3), 1.0);
+	intensity += 1.0 * sinpowfast (clamp01(track, 3527.7, 35.0), 2.0);
 
 	x = Distance;
 

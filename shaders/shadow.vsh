@@ -18,7 +18,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to MiningGodBruce (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -95,7 +95,7 @@ float pathRotationAngle;
 float twistAngle;
 
 const float sunPathRotation = -40.0;
-const float PI = 3.14159265;
+const float PI = 3.1415926535;
 const float rad = 0.01745329;
 
 const float gateTop		= 129.0;
@@ -279,7 +279,22 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 2961.7, 3013.5 - 2961.7), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 3141.9, 3194.5 - 3141.9), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 3324.7, 3376.3 - 3324.7), 1.0);
-	intensity += 1.0 * sinpowfast (clamp01(track, 3557.7, 35.0), 2.0);
+
+	intensity += 1.0 * sinpowsharp(clamp01(track, 9046.3, 9070.3 - 9046.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9064.3, 9116.3 - 9064.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9178.3, 9230.3 - 9178.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9246.3, 9298.3 - 9246.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9362.3, 9414.3 - 9362.3), 1.0);
+
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9428.3, 9480.3 - 9428.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9726.3, 9778.3 - 9726.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9794.3, 9846.3 - 9794.3), 1.0);
+	intensity += 2.0 * sinpowsharp(clamp01(track, 9908.3, 9960.3 - 9908.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 9976.3, 10028.3 - 9976.3), 1.0);
+
+	intensity += 2.0 * sinpowsharp(clamp01(track, 10091.3, 10143.3 - 10091.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 10160.3, 10212.3 - 10160.3), 1.0);
+	intensity += 1.0 * sinpowfast (clamp01(track, 3527.7, 35.0), 2.0);
 
 	freq = 1325.0 + 700.0 * clamp01(1.0 - sign(intensity) * sign(Distance));
 
@@ -453,7 +468,7 @@ void main() {
 
 
 	vec4 position	= GetWorldSpacePosition();
-	
+
 	position.y += 0.0;
 
 	worldPosition = position.xyz + cameraPosition.xyz;
@@ -470,7 +485,7 @@ void main() {
 
 	doEuclid(3734.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
 	doEuclid(9046.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
-	doEuclid(13207.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
+	doEuclid(13242.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
 	doEuclid(57000.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
 
 	preAcidWorldPosition = position.xyz + cameraPosition;
@@ -479,10 +494,10 @@ void main() {
 	shadowNormal = normalize(gl_NormalMatrix * gl_Normal);
 
 	shadowNormal = normalize((shadowView * shadowModelViewInverse * vec4(gl_NormalMatrix * gl_Normal, 0.0)).xyz);
-	
+
 
 	gl_Position = BiasShadowProjection(WorldSpaceToShadowProjection(shadowPosition));
-	
+
 	vertNormal		= normalize(gl_NormalMatrix * gl_Normal);
 
 	collapsedMaterialIDs = CollapseMaterialIDs(materialIDs, 0.0, 0.0, 0.0, 0.0);

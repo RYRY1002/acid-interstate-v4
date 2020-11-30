@@ -18,7 +18,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to MiningGodBruce (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -228,8 +228,8 @@ struct plane {
 	float dist;
 };
 
-const float gateTop		= 130.5;
-const float gateBottom	= 127.5;
+const float gateTop		= 129.0;
+const float gateBottom	= 127.0;
 const float gateLeft	= -0.5;
 const float gateRight	= 1.5;
 

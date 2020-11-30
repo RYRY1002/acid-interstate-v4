@@ -18,7 +18,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to MiningGodBruce (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -72,7 +72,7 @@ const int noiseTextureResolution  = 64;
 
 const bool colortex4MipmapEnabled	= true;
 
-#define PI 3.14159265
+#define PI 3.1415926535
 const float rad = 0.01745329;
 
 uniform sampler2D colortex0;
