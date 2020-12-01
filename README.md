@@ -17,7 +17,7 @@ I'm not going to help you if you can't get this shader to work, because I don't 
 If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
-Thanks to MiningGodBruce (BruceKnowsHow)
+Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
 For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
