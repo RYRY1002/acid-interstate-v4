@@ -4,6 +4,8 @@ This is the repository for my video, Acid Interstate V2.
 
 When the video comes out, I'll add a release that contains the shader and world used in the video.
 
+When the video comes out, I'll make this repository public.
+
 ## Shader Readme
 
 This shader is for use with the Optifine Mod. This shdaer will not work correctly when used with the GLSL Shaders Mod.
