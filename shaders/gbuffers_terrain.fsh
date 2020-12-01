@@ -281,7 +281,7 @@ void main() {
 
 	doEuclid(3734.5);
 	doEuclid(9046.5);
-	doEuclid(13242.5);
+	doEuclid(13207.5);
 	doEuclid(57000.5);
 
 
