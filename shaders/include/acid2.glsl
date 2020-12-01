@@ -1,5 +1,5 @@
 void acid(inout vec3 position, in vec3 worldPosition) {
-  //position.y -= clamp(cameraPosition.x, 50.5, 90.5) - 90.5;		//ascent at beginning of video
+   //position.y -= clamp(cameraPosition.x, 50.5, 90.5) - 90.5;		//ascent at beginning of video
 	position.y += cameraPosition.y - 128.0 - 1.5 * clamp10(cameraPosition.x - 89.5);
 
 	const float speed = 20.0 / 80.0;
@@ -40,7 +40,10 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 
 	Distance = position.x * position.x + position.z * position.z;
-  
+
+	// + or - 52 for middle number in Terrain-Sync
+
+	// These control the Terrain-Sync
 	intensity  = 1.0 * sinpowslow (clamp01(track, 818.3 - 35.0, 35.0), 2.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  951.3,  1003.3 -  951.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 1135.3, 1187.3 - 1135.3), 1.0);
@@ -81,13 +84,15 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 	position.y += intensity * 5.0 * sin(x / freq);
 
-//	intensity *= 1.0 - 2.0 * float(track > ( 900.5 +  952.1) / 2.0);
-//	intensity *= 1.0 - 2.0 * float(track > (1307.3 + 1358.9) / 2.0);
-//	intensity *= 1.0 - 2.0 * float(track > (1511.3 + 1561.7) / 2.0);
-//	intensity *= 1.0 - 2.0 * float(track > (1916.9 + 1968.5) / 2.0);
+  //intensity *= 1.0 - 2.0 * float(track > ( 900.5 +  952.1) / 2.0);
+	//intensity *= 1.0 - 2.0 * float(track > (1307.3 + 1358.9) / 2.0);
+	//intensity *= 1.0 - 2.0 * float(track > (1511.3 + 1561.7) / 2.0);
+	//intensity *= 1.0 - 2.0 * float(track > (1916.9 + 1968.5) / 2.0);
 
 	position.z += intensity * sin(x / freq);
 
+	// To-do: Change Terrain Deformation (not just invert it or whatever)
+	// These control the terrain deformation
   intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 85.5 - 80.5), 3.0);
   intensity += -4.5 * sinpowfast(clamp01(track, 2283.5, 492.5 - 80.5), 3.0); //Set intensity to 0.0 for Terrain Deformation the same as P1
   intensity -= -5.5 * sinpowfast(clamp01(track, 3570.5, 250.5 - 80.5), 3.0);
