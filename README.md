@@ -2,14 +2,14 @@
 
 This is the repository for my video, Acid Interstate V2.
 
-When the video comes out, I'll add a release that contains the shader and world used in the video.
-
-When the video comes out, I'll make this repository public.
+Make sure to follow our license when copying, modifying, merging, publishing and/or distributing our work.
 
 ## Shader Readme
 
-This shader is for use with the Optifine Mod. This shdaer will not work correctly when used with the GLSL Shaders Mod.
-This shdaer was orignally made by MiningGodBruce, and modified heavily by RYRY1002.
+This shader is for use with the Optifine Mod. This shader will not work correctly when used with the GLSL Shaders Mod.
+This shader was orignally made by MiningGodBruce, and modified heavily by RYRY1002.
+
+Make sure to follow our license when copying, modifying, merging, publishing and/or distributing our work.
 
 This shader is super broken, and should not be used for normal play.
 I'm not going to help you if you can't get this shader to work, because I don't care.
@@ -27,14 +27,14 @@ https://links.riley.technology/
 
 ## WIP Videos
 
-WIP 6: https://youtu.be/lY2fFAiAAP8
+[WIP 6](https://youtu.be/lY2fFAiAAP8)
 
-WIP 5: https://youtu.be/KfMLrGUDqCI
+[WIP 5](https://youtu.be/KfMLrGUDqCI)
 
-WIP 4: https://youtu.be/JAcAGXXNZ-I
+[WIP 4](https://youtu.be/JAcAGXXNZ-I)
 
-WIP 3: https://youtu.be/XyrxbawyBh0
+[WIP 3](https://youtu.be/XyrxbawyBh0)
 
-WIP 2: https://youtu.be/GH9BNJ6fVgE
+[WIP 2](https://youtu.be/GH9BNJ6fVgE)
 
-WIP 1: https://youtu.be/2ls9yOUEgXs
+[WIP 1](https://youtu.be/2ls9yOUEgXs)
