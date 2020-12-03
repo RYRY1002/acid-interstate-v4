@@ -12,7 +12,9 @@ We made this, don't claim it to be yours.
 
 Don't sell our work, just don't.
 
-You can publish videos of our work, but if you video revolves around our work, you must put a reference to it in the description of your video _(you can get one here)_. If you video doesn't revolve around it, you don't have to, but we would like it if you did :).
+You can publish videos of our work, but if you video revolves around our work, you must put a reference to it in the description of your video _(there is one at the bottom of this document)_. If you video doesn't revolve around it, you don't have to, but we would like it if you did :).
+
+If you publish a video containing a modified version of our shader, go for it. Just give a reference to the original _(as described in 3b)_ and note in the reference that it is modified, but you must not give a download to the modified shader, as it is for your personal use.
 
 Hey, site owners, I better not see this shader and/or video hosted on a site like http://www.9minecraft.net/.
 
@@ -20,9 +22,9 @@ Hey, site owners, I better not see this shader and/or video hosted on a site lik
 
 ### 1. Copyright
 
-3a. Acid Interstate V2 is the intellectual property of RYRY1002 (here and hereafter referred to as 'the devs') and the copyright belongs to them.
+1a. Acid Interstate V2 is the intellectual property of RYRY1002 (here and hereafter referred to as 'the devs') and the copyright belongs to them.
 
-3b. Any issues regarding copyright should be sent directly to [RYRY1002](https://links.riley.technology/).
+1b. Any issues regarding copyright should be sent directly to [RYRY1002](https://links.riley.technology/).
 
 ### 2. Re-distribution
 
@@ -36,11 +38,13 @@ Hey, site owners, I better not see this shader and/or video hosted on a site lik
 
 3a. You may freely publish Minecraft footage with our shader installed given that you do not infringe other parts of our license or applicable law.
 
-3b. If you release a video or a series of videos that features our shader and/or video as the main content (e.g. Top 5 Shaders List, Minecraft on Acid, etc.), you must provide a reference to our shader _and_ video in the description of your video (or every video if it is in a series) with a link to this video: <link> and a link to the creators: [RYRY1002](https://links.riley.technology) and [BruceKnowsHow](https://www.youtube.com/user/MiningGodBruce). You can find some examples of a reference to our work here _(Coming soon)_.
+3b. If you release a video or a series of videos that features our shader and/or video as the main content (e.g. Top 5 Shaders List, Minecraft on Acid, etc.), you must provide a reference to our shader _and_ video in the description of your video (or every video if it is in a series) with a link to this video: <link> and a link to the creators: [RYRY1002](https://links.riley.technology) and [BruceKnowsHow](https://www.youtube.com/user/MiningGodBruce). You can find some examples of a reference to our shader and video at the bottom of this document.
 
-3c. Should you release a video or series of videos that do not feature our shader and/or video as the main content, (e.g. Let's Plays, SMP Streams, etc.) you are not required to put a reference to our shader and video at all. However, this does not stop you from putting a reference to our shader and video.
+3c. If you release a video that contains a modified version of our shader, you are free to publish it, _(As long as you give credit as described in 3b)_ but you must not give a download for the modified shader, and you must note in the reference to the shader that it has been modified from the original.
 
-3d. You must not re-publish our shader and/or video, and/or claim it as your own.
+3d. Should you release a video or series of videos that do not feature our shader and/or video as the main content, (e.g. Let's Plays, SMP Streams, etc.) you are not required to put a reference to our shader and video at all. However, this does not stop you from putting a reference to our shader and video.
+
+3e. You must not re-publish our shader and/or video, and/or claim it as your own.
 
 ### 4. Personal Use
 
@@ -69,3 +73,8 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+### Reference to our shader and video examples
+_(Go ahead, copy and paste them.)_
+
+This video features a shader called "Acid Interstate V2 Shader" made by RYRY1002 and BruceKnowsHow. You can download it from https://github.com/RYRY1002/acid-interstate-v2/releases/. All credit for the shader goes to them.
