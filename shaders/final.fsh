@@ -21,7 +21,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -306,6 +306,7 @@ float CalculateFogFactor(in vec3 position, in float power, in MaskStruct mask) {
 //	adjustFog(-90.5,	position.xyz);
 	adjustFog(3731.5, position.xyz);
 	adjustFog(9048.5, position.xyz);
+	adjustFog(13207.5, position.xyz);
 
 	float fogFactor = length(position);
 		  fogFactor = max(fogFactor - gl_Fog.start, 0.0);
