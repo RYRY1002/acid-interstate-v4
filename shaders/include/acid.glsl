@@ -69,14 +69,15 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 9246.3, 9298.3 - 9246.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 9362.3, 9414.3 - 9362.3), 1.0);
 
-	intensity -= 2.0 * sinpowsharp(clamp01(track, 9428.3, 9480.3 - 9428.3), 1.0);
-	intensity += 2.0 * sinpowsharp(clamp01(track, 9726.3, 9778.3 - 9726.3), 1.0);
+	intensity -= 1.0 * sinpowsharp(clamp01(track, 9428.3, 9480.3 - 9428.3), 1.0);
+	intensity += 1.0 * sinpowsharp(clamp01(track, 9726.3, 9778.3 - 9726.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 9794.3, 9846.3 - 9794.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 9908.3, 9960.3 - 9908.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 9976.3, 10028.3 - 9976.3), 1.0);
 
 	intensity += 2.0 * sinpowsharp(clamp01(track, 10091.3, 10143.3 - 10091.3), 1.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 10160.3, 35.0), 2.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 10160.3, 10212.3 - 10160.3), 1.0);
+	intensity += 1.0 * sinpowfast	(clamp01(track, 10294.3, 35.0), 2.0);
 
 	x = Distance;
 
@@ -88,7 +89,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity *= 1.0 - 2.0 * float(track > (3141.3 + 3194.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (9178.3 +  9230.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (9362.3 + 9414.3) / 2.0);
-	intensity *= 1.0 - 2.0 * float(track > (9726.3 + 9778.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (9696.3 + 9748.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (9908.3 + 9960.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (10091.3 + 10143.3) / 2.0);
 	intensity *= 1.0 - 1.0 * float(track > (10160.3 + 10212.3) / 2.0);
@@ -100,7 +101,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 // These control the terrain deformation
 	intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 85.5 - 80.5), 3.0);
 	intensity += -4.5 * sinpowfast(clamp01(track, 2283.5, 492.5 - 80.5), 3.0); //Set intensity to 0.0 for Terrain Deformation the same as P1
-	intensity -= -5.5 * sinpowfast(clamp01(track, 3597.5, 207.5 - 80.5), 3.0);
+	intensity -= -5.5 * sinpowslow(clamp01(track, 3527.5, 3734.5 - 3527.5), 3.0);
 	intensity -= 1.0 * sinpowslow	(clamp01(track, 3734.5, 4034.5 - 3734.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 9045.5 - 8966.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.5 - 80.5), 3.0);

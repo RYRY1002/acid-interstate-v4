@@ -251,13 +251,13 @@ void doEuclid(in float x, inout vec3 position, in vec3 worldPosition, inout vec3
 		shadowPosition.xyz	+= vec3(1.0 * (post * 2.0 - 1.0), 0.0, 0.0);
 	} else {
 		if (worldPosition.x < x && leftFirst)
-			shadowPosition.z -= 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
+			shadowPosition.z -= 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 256.0, 129.0));
 		else if (worldPosition.x < x && !leftFirst)
-			shadowPosition.z += 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
+			shadowPosition.z += 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 256.0, 129.0));
 		else if (worldPosition.x > x && leftFirst)
-			shadowPosition.z += 129.0 - (cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0);
+			shadowPosition.z += 129.0 - (cubesmooth(clamp01(cameraPosition.x, backEdge + 256.0, 129.0)) * 129.0);
 		else if (worldPosition.x > x && !leftFirst)
-			shadowPosition.z -= 129.0 - cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0;
+			shadowPosition.z -= 129.0 - cubesmooth(clamp01(cameraPosition.x, backEdge + 256.0, 129.0)) * 129.0;
 	}
 
 	setPortalBoundaries(x, position.xyz);
