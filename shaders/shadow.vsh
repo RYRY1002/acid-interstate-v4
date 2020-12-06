@@ -21,7 +21,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -102,7 +102,7 @@ const float PI = 3.1415926535;
 const float rad = 0.01745329;
 
 const float gateTop		= 129.0;
-const float gateBottom	= 127.0;
+const float gateBottom	= 126.0;
 const float gateLeft	= -0.0;
 const float gateRight	= 1.0;
 
@@ -251,13 +251,13 @@ void doEuclid(in float x, inout vec3 position, in vec3 worldPosition, inout vec3
 		shadowPosition.xyz	+= vec3(1.0 * (post * 2.0 - 1.0), 0.0, 0.0);
 	} else {
 		if (worldPosition.x < x && leftFirst)
-			shadowPosition.z -= 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 256.0, 129.0));
+			shadowPosition.z -= 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
 		else if (worldPosition.x < x && !leftFirst)
-			shadowPosition.z += 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 256.0, 129.0));
+			shadowPosition.z += 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
 		else if (worldPosition.x > x && leftFirst)
-			shadowPosition.z += 129.0 - (cubesmooth(clamp01(cameraPosition.x, backEdge + 256.0, 129.0)) * 129.0);
+			shadowPosition.z += 129.0 - (cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0);
 		else if (worldPosition.x > x && !leftFirst)
-			shadowPosition.z -= 129.0 - cubesmooth(clamp01(cameraPosition.x, backEdge + 256.0, 129.0)) * 129.0;
+			shadowPosition.z -= 129.0 - cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0;
 	}
 
 	setPortalBoundaries(x, position.xyz);

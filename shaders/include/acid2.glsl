@@ -61,6 +61,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 2.0 * sinpowsharp(clamp01(track, 2961.3, 3013.3 - 2961.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 3141.3, 3194.3 - 3141.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 3324.3, 3376.3 - 3324.3), 1.0);
+	intensity -= 1.0 * sinpowsharp(clamp01(track, 3475.3, 3527.3 - 3475.3), 1.0);
 
 	intensity += 1.0 * sinpowsharp(clamp01(track, 9046.3, 9070.3 - 9046.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 9064.3, 9116.3 - 9064.3), 1.0);
@@ -75,8 +76,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 9976.3, 10028.3 - 9976.3), 1.0);
 
 	intensity += 2.0 * sinpowsharp(clamp01(track, 10091.3, 10143.3 - 10091.3), 1.0);
-	intensity -= 2.0 * sinpowsharp(clamp01(track, 10160.3, 10212.3 - 10160.3), 1.0);
-	intensity -= 1.0 * sinpowfast (clamp01(track, 3527.3, 35.0), 2.0);
+	intensity -= 1.0 * sinpowfast	(clamp01(track, 10160.3, 35.0), 2.0);
 
 	x = Distance;
 
@@ -84,21 +84,27 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 	position.y += intensity * 5.0 * sin(x / freq);
 
-  //intensity *= 1.0 - 2.0 * float(track > ( 900.5 +  952.1) / 2.0);
-	//intensity *= 1.0 - 2.0 * float(track > (1307.3 + 1358.9) / 2.0);
-	//intensity *= 1.0 - 2.0 * float(track > (1511.3 + 1561.7) / 2.0);
-	//intensity *= 1.0 - 2.0 * float(track > (1916.9 + 1968.5) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (2776.3 + 2828.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (3141.3 + 3194.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (9178.3 +  9230.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (9362.3 + 9414.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (9726.3 + 9778.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (9908.3 + 9960.3) / 2.0);
+	intensity *= 1.0 - 2.0 * float(track > (10091.3 + 10143.3) / 2.0);
+	intensity *= 1.0 - 1.0 * float(track > (10160.3 + 10212.3) / 2.0);
 
 	position.z += intensity * sin(x / freq);
 
 	// To-do: Change Terrain Deformation (not just invert it or whatever)
 	// These control the terrain deformation
-  intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 85.5 - 80.5), 3.0);
-  intensity += -4.5 * sinpowfast(clamp01(track, 2283.5, 492.5 - 80.5), 3.0); //Set intensity to 0.0 for Terrain Deformation the same as P1
-  intensity -= -5.5 * sinpowfast(clamp01(track, 3570.5, 250.5 - 80.5), 3.0);
-  intensity -= 1.0 * sinpowslow(clamp01(track, 3734.5, 3938.5 - 3734.5), 3.0);
-  intensity += 1.0 * sinpowslow(clamp01(track, 8966.5, 9045.5 - 8966.5), 3.0);
-  intensity -= 1.0 * sinpowfast(clamp01(track, 9046.5, 492.5 - 80.5), 3.0);
+	intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 85.5 - 80.5), 3.0);
+	intensity += -4.5 * sinpowfast(clamp01(track, 2283.5, 492.5 - 80.5), 3.0); //Set intensity to 0.0 for Terrain Deformation the same as P1
+	intensity -= -5.5 * sinpowfast(clamp01(track, 3597.5, 207.5 - 80.5), 3.0);
+	intensity -= 1.0 * sinpowslow(clamp01(track, 3734.5, 4034.5 - 3734.5), 3.0);
+	intensity += 1.0 * sinpowslow(clamp01(track, 8966.5, 9045.5 - 8966.5), 3.0);
+	intensity -= 1.0 * sinpowfast(clamp01(track, 9046.5, 492.5 - 80.5), 3.0);
+	intensity += 1.0 * sinpowfast(clamp01(track, 13070.5, 207.5 - 80.5), 3.0);
+	intensity -= 1.0 * sinpowfast(clamp01(track, 13207.3, 13507.3 - 13207.3), 3.0);
 
 	om = intensity * sin(Distance * sin(time * speed / 256.0) / 5000);
 	rotate(position.yz, om / 1.5);
