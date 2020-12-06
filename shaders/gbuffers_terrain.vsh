@@ -342,7 +342,7 @@ void main() {
 	doEuclid(3734.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
 	doEuclid(9046.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
 	doEuclid(13207.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
-	doEuclid(57000.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
+	doEuclid(20503.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
 
 	preAcidWorldPosition = position.xyz + cameraPosition;
 

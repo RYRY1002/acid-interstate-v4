@@ -285,7 +285,7 @@ void main() {
 	doEuclid(3734.5);
 	doEuclid(9046.5);
 	doEuclid(13207.5);
-	doEuclid(57000.5);
+	doEuclid(20503.5);
 
 
 	vec4 color2 = color;
