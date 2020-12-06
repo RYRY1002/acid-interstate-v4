@@ -239,74 +239,6 @@ vec2 GetCoord(in vec2 coord)
 	position.y -= cameraPosition.y - 128.0 - 1.5 * clamp10(cameraPosition.x - 89.5);
 }
 
-float portalCheck(in float x, in vec3 worldPosition) {
-	if (worldPosition.x > x - 0.6
-	 && worldPosition.x < x + 0.6
-	 && worldPosition.y > 126.9
-	 && worldPosition.y < 131.1
-	 && worldPosition.z > -1.1
-	 && worldPosition.z < 2.1
-	 && abs(mc_Entity.x - 4.0) < 0.1) return 1.0;
-	else return 0.0;
-}
-
-float landCheck(in vec3 worldPosition, in vec3 minimum, vec3 maximum) {
-	if(worldPosition.x > minimum.x
-	&& worldPosition.y > minimum.y
-	&& worldPosition.z > minimum.z
-	&& worldPosition.x < maximum.x
-	&& worldPosition.y < maximum.y
-	&& worldPosition.z < maximum.z)
-		return 1.0;
-
-	return 0.0;
-}
-
-void setPortalBoundaries(in float x, in vec3 playerSpacePosition) {
-	topLeft		= vec3(x, gateTop,		gateLeft	) - cameraPosition;
-	topRight	= vec3(x, gateTop,		gateRight	) - cameraPosition;
-	bottomRight	= vec3(x, gateBottom,	gateRight	) - cameraPosition;
-	bottomLeft	= vec3(x, gateBottom,	gateLeft	) - cameraPosition;
-
-	acid(topLeft,		 topLeft		+ cameraPosition);
-	acid(topRight,		 topRight		+ cameraPosition);
-	acid(bottomRight,	 bottomRight	+ cameraPosition);
-	acid(bottomLeft,	 bottomLeft		+ cameraPosition);
-}
-
-void doEuclid(in float x, inout vec3 position, in vec3 worldPosition, inout vec3 shadowPosition, const bool leftFirst) {
-	if (abs(track - x) > 512.0) return;
-
-	float frontEdge = x - 127.5;
-	float backEdge = x + 129.5;
-
-	portal			= portalCheck(x, worldPosition);
-	left			= landCheck(worldPosition, vec3(frontEdge + 0.5, -0.5, -256.5), vec3(backEdge - 0.5, 256.5,  -0.5)) * (1.0 - portal);
-	right			= landCheck(worldPosition, vec3(frontEdge + 0.5, -0.5,    1.5), vec3(backEdge - 0.5, 256.5, 257.5)) * (1.0 - portal);
-
-	pre = (leftFirst ? left : right);
-	post = (leftFirst ? right : left);
-
-	if (left > 0.5) {
-		position.xyz		+= vec3(-1.0 * (pre * 2.0 - 1.0), 0.0, 129.0);
-		shadowPosition.xyz	+= vec3(-1.0 * (pre * 2.0 - 1.0), 0.0, 0.0);
-	} else if (right > 0.5) {
-		position.xyz		+= vec3(1.0 * (post * 2.0 - 1.0), 0.0, -129.0);
-		shadowPosition.xyz	+= vec3(1.0 * (post * 2.0 - 1.0), 0.0, 0.0);
-	} else {
-		if (worldPosition.x < x && leftFirst)
-			shadowPosition.z -= 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
-		else if (worldPosition.x < x && !leftFirst)
-			shadowPosition.z += 129.0 * cubesmooth(clamp01(cameraPosition.x, frontEdge - 255.0, 128.0));
-		else if (worldPosition.x > x && leftFirst)
-			shadowPosition.z += 129.0 - (cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0);
-		else if (worldPosition.x > x && !leftFirst)
-			shadowPosition.z -= 129.0 - cubesmooth(clamp01(cameraPosition.x, backEdge + 255.0, 128.0)) * 128.0;
-	}
-
-	setPortalBoundaries(x, position.xyz);
-}
-
 void main() {
 	color			= gl_Color;
 	texcoord				= gl_MultiTexCoord0.st;
@@ -334,15 +266,6 @@ void main() {
 
 	shadowPosition	= position;
 	worldPosition	= position.xyz + cameraPosition.xyz;
-
-	portal			= 0.0;
-	left			= 0.0;
-	right			= 0.0;
-
-	doEuclid(3734.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
-	doEuclid(9046.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
-	doEuclid(13207.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, true);
-	doEuclid(57000.5, position.xyz, worldPosition.xyz, shadowPosition.xyz, false);
 
 	preAcidWorldPosition = position.xyz + cameraPosition;
 

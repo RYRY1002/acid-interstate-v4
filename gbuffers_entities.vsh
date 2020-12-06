@@ -21,7 +21,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -153,74 +153,13 @@ void GetTangetBinormal(inout vec3 tangent, inout vec3 binormal) {
 }
 
 
-float clamp01(in float x) {
-	return clamp(x, 0.0, 1.0); }
-
-float clamp01(in float x, in float start, in float length) {
-	return clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-float clamp10(in float x) {
-	return 1.0 - clamp(x, 0.0, 1.0); }
-
-float clamp10(in float x, in float start, in float length) {
-	return 1.0 - clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-//These functions are for a linear domain of 0.0-1.0 & have a range of 0.0-1.0
-float powslow(in float x, in float power) {	//linear --> exponentially slow
-	return pow(x, power); }
-
-float powfast(in float x, in float power) {	//linear --> exponentially fast
-	return 1.0 - pow(1.0 - x, power); }
-
-//sinpow functions are just like power functions, but use a mix of exponential and trigonometric interpolation
-float sinpowslow(in float x, in float power) {
-	return 1.0 - pow(sin(pow(1.0 - x, 1.0 / power) * PI / 2.0), power); }
-
-float sinpowfast(in float x, in float power) {
-	return pow(sin(pow(x, 1.0 / power) * PI / 2.0), power); }
-
-float sinpowsharp(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) * 0.5 + sinpowslow(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-float sinpowsmooth(in float x, in float power) {
-	return sinpowslow(clamp01(x * 2.0), power) * 0.5 + sinpowfast(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-//cubesmooth functions have zero slopes at the start & end of their ranges
-float cubesmooth(in float x) {
-	return x * x * (3.0 - 2.0 * x); }
-
-float cubesmoothslow(in float x, in float power) {
-	return pow(x, power - 1.0) * (power - (power - 1.0) * x); }
-
-float cubesmoothfast(in float x, in float power) {
-	return 1.0 - pow(1.0 - x, power - 1.0) * (power - (power - 1.0) * (1.0 - x)); }
-
-
-//U functions take a linear domain 0.0-1.0 and have a range that goes from 0.0 to 1.0 and back to 0.0
-float sinpowsharpU(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) - sinpowslow(clamp01(x * 2.0 - 1.0), power); }
-
-float sinpowfastU(in float x, in float power) {
-	//return cubesmooth(clamp01(x * 2.0 - 1.0)); }
-	return sinpowfast(clamp01(x * power), power) - cubesmooth(clamp01(max(x * power * 2.0 - 1.0, 0.0) / power)); }
+#include "include/animation.glsl"
 
 
 void rotate(inout vec2 p, in float angle) {
 	mat2 rotMat = mat2(cos(angle), -sin(angle),
 					   sin(angle),  cos(angle));
 	p *= rotMat; }
-
-bool portalCheck(in float x, in vec2 y, in vec2 z, in vec3 worldPosition)
-{
-	if (worldPosition.x > x - 0.6
-	 && worldPosition.x < x + 0.6
-	 && worldPosition.y > y.x - 0.6
-	 && worldPosition.y < y.y + 0.6
-	 && worldPosition.z > z.x - 0.6
-	 && worldPosition.z < z.y + 0.6
-	 && abs(mc_Entity.x - 4.0) < 0.1) return true;
-	else return false;
-}
 
 vec2 GetCoord(in vec2 coord)
 {
@@ -231,60 +170,7 @@ vec2 GetCoord(in vec2 coord)
 	return coord;
 }
 
-float landCheck(in vec3 worldPosition, in vec3 minimum, vec3 maximum)
-{
-	if(worldPosition.x > minimum.x
-	&& worldPosition.y > minimum.y
-	&& worldPosition.z > minimum.z
-	&& worldPosition.x < maximum.x
-	&& worldPosition.y < maximum.y
-	&& worldPosition.z < maximum.z)
-		return 1.0;
-
-	return 0.0;
-}
-
 #include "include/acid2.glsl"
-
-void interpolateBounds(inout float x, inout vec2 y, inout vec2 z)
-{
-	vec3 bottomLeftWorld = vec3(x, y.x, z.x);
-	vec3 bottomRightWorld = vec3(x, y.x, z.y);
-	vec3 topLeftWorld = vec3(x, y.y, z.x);
-	vec3 topRightWorld = vec3(x, y.y, z.y);
-
-	vec3 bottomLeftPlayer = bottomLeftWorld - cameraPosition;
-	vec3 bottomRightPlayer = bottomRightWorld - cameraPosition;
-	vec3 topLeftPlayer = topLeftWorld - cameraPosition;
-	vec3 topRightPlayer = topRightWorld - cameraPosition;
-
-	vec3 bottomLeftPlayer2 = bottomLeftPlayer;
-	vec3 bottomRightPlayer2 = bottomRightPlayer;
-	vec3 topLeftPlayer2 = topLeftPlayer;
-	vec3 topRightPlayer2 = topRightPlayer;
-
-	acid(bottomLeftPlayer, bottomLeftWorld);
-	acid(bottomRightPlayer, bottomRightWorld);
-	acid(topLeftPlayer, topLeftWorld);
-	acid(topRightPlayer, topRightWorld);
-
-	bottomLeftPlayer -= bottomLeftPlayer2;
-	bottomRightPlayer -= bottomRightPlayer2;
-	topLeftPlayer -= topLeftPlayer2;
-	topRightPlayer -= topRightPlayer2;
-
-	vec3 bottomLeftPosition = bottomLeftWorld + bottomLeftPlayer;
-	vec3 bottomRightPosition = bottomRightWorld + bottomRightPlayer;
-	vec3 topLeftPosition = topLeftWorld + topLeftPlayer;
-	vec3 topRightPosition = topRightWorld + topRightPlayer;
-
-	x = (bottomLeftPosition.x + bottomRightPosition.x + topLeftPosition.x + topRightPosition.x) / 4.0;
-	y.x = (bottomLeftPosition.y + bottomRightPosition.y) / 2.0;
-	y.y = (topLeftPosition.y + topRightPosition.y) / 2.0;
-	z.x = (bottomLeftPosition.z + topLeftPosition.z) / 2.0;
-	z.y = (bottomRightPosition.z + topRightPosition.z) / 2.0;
-}
-
 
 void main() {
 	color			= gl_Color;
@@ -305,24 +191,6 @@ void main() {
 
 
 	worldPosition	= position.xyz + cameraPosition.xyz;
-
-	float land1 = landCheck(worldPosition, vec3(2248.5, 85.5, -256.5), vec3(2504.5, 256.5,  -0.5));
-	float land2 = landCheck(worldPosition, vec3(2248.5, 55.5,    1.5), vec3(2504.5, 256.5, 257.5));
-
-	if (land1 > 0.5) { position.x -= 1.0; position.y -= 86.0; }
-	if (land2 > 0.5) { position.x += 1.0; }
-
-	shadowPosition	= position;
-
-	if (land1 > 0.5) { position.z += 129.0; }
-	if (land2 > 0.5) { position.z -= 129.0; }
-
-	if (land1 + land2 < 0.5) {
-		if (worldPosition.x <= 2248.5)
-			shadowPosition.z -= 129.0 * (clamp(worldPosition.x, 2119.0, 2248.0) - 2119.0) / (129.0);
-		if (worldPosition.x > 2500.0)
-			shadowPosition.z += 129.0 * (1.0 - (clamp(worldPosition.x, 2505.0, 2505.0 + 129.0) - 2505.0) / (129.0));
-	}
 
 	acid(position.xyz, worldPosition);
 

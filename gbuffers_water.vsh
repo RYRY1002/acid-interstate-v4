@@ -21,7 +21,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -217,61 +217,7 @@ void AdjustNormalTimeCycle(inout vec3 shadowSpaceNormal, in float timeAngle, in 
 }
 
 
-float clamp01(in float x) {
-	return clamp(x, 0.0, 1.0); }
-
-float clamp01(in float x, in float start, in float length) {
-	return clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-float clamp10(in float x) {
-	return 1.0 - clamp(x, 0.0, 1.0); }
-
-float clamp10(in float x, in float start, in float length) {
-	return 1.0 - clamp((clamp(x, start, start + length) - start) / length, 0.0, 1.0); }
-
-//These functions are for a linear domain of 0.0-1.0 & have a range of 0.0-1.0
-float powslow(in float x, in float power) {	//linear --> exponentially slow
-	return pow(x, power); }
-
-float powfast(in float x, in float power) {	//linear --> exponentially fast
-	return 1.0 - pow(1.0 - x, power); }
-
-//sinpow functions are just like power functions, but use a mix of exponential and trigonometric interpolation
-float sinpowslow(in float x, in float power) {
-	return 1.0 - pow(sin(pow(1.0 - x, 1.0 / power) * pi / 2.0), power); }
-
-float sinpowfast(in float x, in float power) {
-	return pow(sin(pow(x, 1.0 / power) * pi / 2.0), power); }
-
-float sinpowsharp(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) * 0.5 + sinpowslow(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-float sinpowsmooth(in float x, in float power) {
-	return sinpowslow(clamp01(x * 2.0), power) * 0.5 + sinpowfast(clamp01(x * 2.0 - 1.0), power) * 0.5; }
-
-//cubesmooth functions have zero slopes at the start & end of their ranges
-float cubesmooth(in float x) {
-	return x * x * (3.0 - 2.0 * x); }
-
-float cubesmoothslow(in float x, in float power) {
-	return pow(x, power - 1.0) * (power - (power - 1.0) * x); }
-
-float cubesmoothfast(in float x, in float power) {
-	return 1.0 - pow(1.0 - x, power - 1.0) * (power - (power - 1.0) * (1.0 - x)); }
-
-
-//U functions take a linear domain 0.0-1.0 and have a range that goes from 0.0 to 1.0 and back to 0.0
-float sinpowsharpU(in float x, in float power) {
-	return sinpowfast(clamp01(x * 2.0), power) - sinpowslow(clamp01(x * 2.0 - 1.0), power); }
-
-float sinpowfastU(in float x, in float power) {
-	//return cubesmooth(clamp01(x * 2.0 - 1.0)); }
-	return sinpowfast(clamp01(x * power), power) - cubesmooth(clamp01(max(x * power * 2.0 - 1.0, 0.0) / power)); }
-
-void rotate(inout vec2 vector, float radians) {
-	vector *= mat2(cos(radians), -sin(radians),
-				   sin(radians),  cos(radians));
-}
+#include "include/animation.glsl"
 
 
 void AdjustTimeCycle(inout vec4 worldSpacePosition, inout vec3 shadowSpaceNormal) {
@@ -309,47 +255,6 @@ vec2 GetCoord(in vec2 coord)
 
 #include "include/acid2.glsl"
 
-float portalCheck(in float x, in vec3 worldPosition) {
-	if (worldPosition.x > x - 0.6
-	 && worldPosition.x < x + 0.6
-	 && worldPosition.y > 126.9
-	 && worldPosition.y < 131.1
-	 && worldPosition.z > -1.1
-	 && worldPosition.z < 2.1
-	 && abs(mc_Entity.x - 4.0) < 0.1) return 1.0;
-	else return 0.0;
-}
-
-float landCheck(in vec3 worldPosition, in vec3 minimum, vec3 maximum) {
-	if(worldPosition.x > minimum.x
-	&& worldPosition.y > minimum.y
-	&& worldPosition.z > minimum.z
-	&& worldPosition.x < maximum.x
-	&& worldPosition.y < maximum.y
-	&& worldPosition.z < maximum.z)
-		return 1.0;
-
-	return 0.0;
-}
-
-void setPortalBoundaries(in float x, in vec3 playerSpacePosition) {
-	vec3 topLeft		= vec3(x, gateTop,		gateLeft	) - cameraPosition;
-	vec3 topRight		= vec3(x, gateTop,		gateRight	) - cameraPosition;
-	vec3 bottomRight	= vec3(x, gateBottom,	gateRight	) - cameraPosition;
-	vec3 bottomLeft		= vec3(x, gateBottom,	gateLeft	) - cameraPosition;
-
-	acid(topLeft,		 topLeft		+ cameraPosition);
-	acid(topRight,		 topRight		+ cameraPosition);
-	acid(bottomRight,	 bottomRight	+ cameraPosition);
-	acid(bottomLeft,	 bottomLeft		+ cameraPosition);
-
-	topBound	= mix(topLeft.y,		topRight.y,		playerSpacePosition.z + cameraPosition.z +   0.5) + cameraPosition.y;
-	bottomBound	= mix(bottomLeft.y,		bottomRight.y,	playerSpacePosition.z + cameraPosition.z +   0.5) + cameraPosition.y;
-	leftBound	= mix(bottomLeft.z,		topLeft.z,		playerSpacePosition.y + cameraPosition.y - 127.5) + cameraPosition.z;
-	rightBound	= mix(bottomRight.z,	topRight.z,		playerSpacePosition.y + cameraPosition.y - 127.5) + cameraPosition.z;
-}
-
-
 void main() {
 	color			= gl_Color;
 	texcoord				= gl_MultiTexCoord0.st;
@@ -366,55 +271,6 @@ void main() {
 
 	vec4 position	= GetWorldSpacePosition(); /*
 	vec4 position	= GetWorldSpacePositionShadow(); //*/
-
-
-	shadowPosition	= position;
-	worldPosition	= position.xyz + cameraPosition.xyz;
-
-	portal			= 0.0;
-	left			= 0.0;
-	right			= 0.0;
-
-	if (track < 3000.0) {
-		portal			= portalCheck(3734.5, worldPosition);
-		portal      = portalCheck(9046.5, worldPosition);
-		portal      = portalCheck(13242.5, worldPosition);
-		left			= landCheck(worldPosition, vec3(2248.5, 85.5, -256.5), vec3(2504.5, 256.5,  -0.5)) * (1.0 - portal);
-		right			= landCheck(worldPosition, vec3(2248.5, 55.5,    1.5), vec3(2504.5, 256.5, 257.5)) * (1.0 - portal);
-
-		if (left > 0.5) {
-			position.xyz		+= vec3(-1.0, -86.0, 129.0);
-			shadowPosition.xyz	+= vec3(-1.0, -86.0, 0.0);
-		} else if (right > 0.5) {
-			position.xyz		+= vec3(1.0, 0.0, -129.0);
-			shadowPosition.xyz	+= vec3(1.0, 0.0, 0.0);
-		} else {
-			if (portal > 0.5)
-				shadowPosition.z -= 129.0;
-			if (worldPosition.x <= 2248.5)
-				shadowPosition.z -= 129.0 * (clamp(worldPosition.x, 2119.0, 2248.0) - 2119.0) / (129.0);
-			if (worldPosition.x > 2500.0)
-				shadowPosition.z += 129.0 * (1.0 - (clamp(worldPosition.x, 2505.0, 2505.0 + 129.0) - 2505.0) / (129.0));
-		}
-
-		setPortalBoundaries(2375.5, position.xyz);
-	} else {
-	//	portal			= portalCheck(2375.5, worldPosition);
-		left			= landCheck(worldPosition, vec3(5502.5, 0.0, 1.5), vec3(5758.5, 256.5,  257.5)) * (1.0 - portal);
-	//	right			= landCheck(worldPosition, vec3(2248.5, 55.5,    1.5), vec3(2504.5, 256.5, 257.5)) * (1.0 - portal);
-
-		if (left > 0.5) {
-			position.xyz		+= vec3(-1.0, 0.0, -129.0);
-			shadowPosition.xyz	+= vec3(-1.0, 0.0, 0.0);
-		} else if (right > 0.5) {
-			position.xyz		+= vec3(1.0, 0.0, -129.0);
-			shadowPosition.xyz	+= vec3(1.0, 0.0, 0.0);
-		} else {
-			if (worldPosition.x <= 5502.5)
-				shadowPosition.z += 129.0 * (clamp(worldPosition.x, 5502.0 - 129.0, 5502.0) - (5502.0 - 129.0)) / (129.0);
-		}
-	}
-
 
 	preAcidWorldPosition = position.xyz + cameraPosition;
 

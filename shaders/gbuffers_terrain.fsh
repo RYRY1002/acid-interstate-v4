@@ -21,7 +21,7 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
@@ -231,49 +231,10 @@ struct plane {
 	float dist;
 };
 
-const float gateTop		= 129.0;
-const float gateBottom	= 127.0;
-const float gateLeft	= -0.5;
-const float gateRight	= 1.5;
-
 float planeDistance(in vec3 point, in vec3 p0, in vec3 p1, in vec3 p2) {
 	vec3 normal = normalize(cross(p1 - p0, p2 - p0));
 
 	return normal.x * point.x + normal.y * point.y + normal.z * point.z - dot(normal, p0);
-}
-
-float frustumCheck(in float x) {		//returns true terrain inside the constructed frustum
-	if (worldPosition.x < x && cameraPos.x < x)
-		return 0.0;
-
-	float topDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topRight,		topLeft);
-	float bottomDistance	= planeDistance(playerSpacePosition.xyz, vec3(0.0), bottomRight,	bottomLeft);
-	float leftDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topLeft,		bottomLeft);
-	float rightDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topRight,		bottomRight);
-
-	if (worldPosition.x > x && cameraPos.x < x) {
-		if (sign(leftDistance) > -0.5
-		 || sign(rightDistance) < 0.5
-		 || sign(topDistance) > 0.5
-		 || sign(bottomDistance) < 0.5)
-			return 0.0; }
-	else
-		if (sign(leftDistance) > -0.5
-		 && sign(rightDistance) < 0.5
-		 && sign(topDistance) > 0.5
-		 && sign(bottomDistance) < 0.5)
-			return 0.0;
-
-	return 1.0;
-}
-
-void doEuclid(in float x) {
-	if (abs(cameraPos.x - x) > 385.0) return;
-
-	if (frustumCheck(x) > 0.5) {
-		isInFrustum = 1.0;
-		if (pre > 0.5) discard;
-	} else if (post > 0.5) discard;
 }
 
 void main() {
@@ -281,11 +242,6 @@ void main() {
 	if (CalculateFogFactor(playerSpacePosition, 2.0) >= 0.99) discard;
 
 	isInFrustum = 0.0;
-
-	doEuclid(3734.5);
-	doEuclid(9046.5);
-	doEuclid(13207.5);
-	doEuclid(57000.5);
 
 
 	vec4 color2 = color;
