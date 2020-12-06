@@ -28,6 +28,8 @@ https://links.riley.technology/
 
 ## WIP Videos
 
+[WIP 7](https://youtu.be/x8l6Ckb95O0)
+
 [WIP 6](https://youtu.be/lY2fFAiAAP8)
 
 [WIP 5](https://youtu.be/KfMLrGUDqCI)
