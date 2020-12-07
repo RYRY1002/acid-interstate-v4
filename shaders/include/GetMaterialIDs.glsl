@@ -16,6 +16,8 @@ float GetMaterialIDs() {						//Gather materials
 		case 9:
 					materialID = 4.0; break;	//Water
 		case 79:	materialID = 5.0; break;	//Ice
+		case 41:	materialID = 6.0; break;	//Gold block
+		case 45		materialID = 11.0 break;	//Brick Block
 		case 50:	materialID = 7.0; break;	//Torch
 		case 10:
 		case 11:	materialID = 8.0; break;	//Lava
