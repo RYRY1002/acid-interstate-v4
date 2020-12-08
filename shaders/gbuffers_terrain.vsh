@@ -105,7 +105,7 @@ const float rad = 0.01745329;
 
 const float gateTop		= 130.0;
 const float gateBottom	= 126.0;
-const float gateLeft	= -1.1;
+const float gateLeft	= -1.5;
 const float gateRight	= 2.5;
 
 
