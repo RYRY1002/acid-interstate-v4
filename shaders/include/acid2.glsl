@@ -44,7 +44,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	// + or - 52 for middle number in Terrain-Sync
 
 	// These control the Terrain-Sync
-  intensity  = 1.0 * sinpowslow (clamp01(track, 818.3 - 35.0, 35.0), 2.0);
+  intensity += 1.0 * sinpowslow (clamp01(track, 789.3, 818.3 - 789.3), 2.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  951.3, 1003.3 -  951.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 1135.3, 1187.3 - 1135.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 1315.3, 1367.3 - 1315.3), 1.0);
@@ -59,22 +59,22 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 2.0 * sinpowsharp(clamp01(track, 2961.3, 3013.3 - 2961.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 3141.3, 3194.3 - 3141.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 3324.3, 3376.3 - 3324.3), 1.0);
-	intensity -= 1.0 * sinpowfast (clamp01(track, 3528.3, 35.0), 2.0);
+	intensity -= 1.0 * sinpowfast (clamp01(track, 3528.3, 3557.3 - 3528.3), 2.0);
 
-	intensity  = 1.0 * sinpowslow (clamp01(track, 9046.3 - 35.0, 35.0), 2.0);
+	intensity += 1.0 * sinpowslow (clamp01(track,  9046.3,  9075.3 -  9046.3), 2.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9063.3,  9115.3 -  9063.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track,  9176.3,  9228.3 -  9176.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9242.3,  9294.3 -  9242.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track,  9358.3,  9410.3 -  9358.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9424.3,  9476.3 -  9424.3), 1.0);
 	intensity += 1.0 * sinpowsharp(clamp01(track,  9536.3,  9588.3 -  9536.3), 1.0);
-	intensity	+= 1.0 * sinpowsharp(clamp01(track,  9721.3,  9773.3 -  9721.3), 1.0);
+	intensity += 1.0 * sinpowsharp(clamp01(track,  9721.3,  9773.3 -  9721.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9788.3,  9840.3 -  9788.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track,  9902.3,  9954.3 -  9902.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9977.3, 10029.3 -  9977.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 10083.3, 10135.3 - 10083.3), 1.0);
-	intensity -= 2.0 * sinpowsharp(clamp01(track, 10117.3, 10169.3 - 10117.3), 1.0);
-	intensity += 1.0 * sinpowfast (clamp01(track, 10285.3, 35.0), 2.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 10152.3, 10204.3 - 10117.3), 1.0);
+	intensity += 1.0 * sinpowfast (clamp01(track, 10285.3, 10314.3 - 10285.3), 2.0);
 
 	x = Distance;
 
