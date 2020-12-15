@@ -123,8 +123,8 @@ vec4 WorldSpaceToShadowProjection(in vec4 worldSpacePosition) {
 }
 
 vec4 BiasShadowProjection(in vec4 projectedShadowSpacePosition) {
-	vec2 pos = abs(projectedShadowSpacePosition.xy * 1.165);
-	float dist = pow(pow(pos.x, 8) + pow(pos.y, 8), 1.0 / 8.0);
+	vec2 position = abs(projectedShadowSpacePosition.xy * 1.165);
+	float dist = pow(pow(position.x, 8) + pow(position.y, 8), 1.0 / 8.0);
 	float distortFactor = (1.0 - SHADOW_MAP_BIAS) + dist * SHADOW_MAP_BIAS;
 
 	projectedShadowSpacePosition.xy /= distortFactor;
