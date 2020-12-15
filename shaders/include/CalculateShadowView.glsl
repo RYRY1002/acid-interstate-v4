@@ -8,7 +8,7 @@ float CalculateShadowView() {
 	// These manage the Custom Cycle
 	timeAngle += 310.0 * sinpowsmooth(clamp01(previousCameraPosition.x, -300.0, -299.0 - -300.0), 1.0);
 	timeAngle += 60.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 90.0, 390.0 - 90.0), 1.0);
-	timeAngle += 180.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 2284.0, 0.001 - 2284.0), 1.0);
+//	timeAngle += 180.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 2284.0, 0.001 - 2284.0), 1.0);
 	timeAngle += 180.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 3734.0, 4234.0 - 3734.0), 1.0);
 	timeAngle += 180.0 * sinpowsmooth(clamp01(previousCameraPosition.x, 7000.0, 1750.0 - 0.0), 1.0);
 
