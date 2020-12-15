@@ -94,12 +94,8 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 	position.z += intensity * sin(Distance / freq);
 
-
-	//To-do: Change Terrain Deformation (not just invert it or whatever)
-	//These control the terrain deformation
 	intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 80.501 - 80.5), 3.0);
-	//intensity += -4.5 * sinpowfast(clamp01(track, 2283.5, 492.5 - 80.5), 3.0); //Set intensity to 0.0 for Terrain Deformation the same as P1
-	intensity -= -1.0 * sinpowslow(clamp01(track, 3527.5, 3734.5 - 3527.5), 3.0); // 5.5
+	intensity -= -1.0 * sinpowslow(clamp01(track, 3527.5, 3734.5 - 3527.5), 3.0);
 	intensity -= 1.0 * sinpowslow	(clamp01(track, 3734.5, 4034.5 - 3734.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 9045.5 - 8966.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.5 - 80.5), 3.0);
@@ -108,8 +104,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 1.0 * sinpowslow	(clamp01(track, 20000.5, 20202.5 - 20000.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.5 - 80.5), 3.0);
 
-	om = intensity * sin(Distance * sin(time * speed / 256.0) / 5000);
-	rotate(position.yz, om / 1.5); // Terrain Deformation
+	#include "terrainDeformation.glsl"
 
 	intensity  = sinpowsmooth(clamp01(track, 52255.7 - 800.0, 1100.0), 1.0);
   intensity -= sinpowsmooth(clamp01(track, 53882.5 - 750.0, 750.0), 1.0);
