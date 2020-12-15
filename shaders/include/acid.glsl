@@ -73,7 +73,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 2.0 * sinpowsharp(clamp01(track,  9902.3,  9954.3 -  9902.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9977.3, 10029.3 -  9977.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 10083.3, 10135.3 - 10083.3), 1.0);
-	intensity -= 2.0 * sinpowsharp(clamp01(track, 10117.3, 10169.3 - 10117.3), 1.0);
+	intensity -= 2.0 * sinpowsharp(clamp01(track, 10152.3, 10204.3 - 10117.3), 1.0);
 	intensity += 1.0 * sinpowfast (clamp01(track, 10285.3, 35.0), 2.0);
 
 
