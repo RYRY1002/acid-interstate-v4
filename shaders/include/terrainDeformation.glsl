@@ -30,9 +30,9 @@ rotate(position.xz, radians(-45.0) * customDeformationP3);
 float customDeformationP4 = 0.0;
 customDeformationP4  = 1.0 * sinpowsmooth(clamp01(track, 13207.5, 492.5), 3.0);
 customDeformationP4 -= 1.0 * sinpowsmooth(clamp01(track, 14675.5, 820.5), 3.0);
-position.y -= 3.25 * customDeformationP4;
-rotate(position.yz, position.x * customDeformationP4 * 0.05);
-position.y += 3.25 * customDeformationP4;
+position.y += -3.25 * customDeformationP4;
+rotate(position.zy, position.x * customDeformationP4 * 0.05);
+position.y -= -3.25 * customDeformationP4;
 
 // P5 Custom Deformation
 float customDeformationP5 = 0.0;
