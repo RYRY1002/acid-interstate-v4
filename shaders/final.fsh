@@ -814,7 +814,7 @@ void main() {
 		color *= 0.0;
 
 	color = mix(color, sky.rgb, sky.a);
-//	color = convertToHDR(color);
+	color = convertToHDR(color);
 //	color = desaturationFilter(color);
 
 	TonemapReinhard05(color);
