@@ -44,7 +44,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	// + or - 52 for middle number in Terrain-Sync
 
 	// These control the Terrain-Sync
-	intensity += 1.0 * sinpowslow (clamp01(track,   789.3, 52.3), 2.0);
+	intensity += 1.0 * sinpowslow (clamp01(track,   766.3, 52.3), 2.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,   951.3, 52.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track,  1135.3, 52.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  1315.3, 52.3), 1.0);
