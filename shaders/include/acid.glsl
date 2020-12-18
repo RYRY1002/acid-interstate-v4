@@ -61,7 +61,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 2.0 * sinpowsharp(clamp01(track,  3324.3, 52.3), 1.0);
 	intensity -= 1.0 * sinpowfast (clamp01(track,  3528.3, 52.3), 2.0);
 
-	intensity += 1.0 * sinpowslow (clamp01(track,  9046.3, 52.3), 2.0);
+	intensity += 1.0 * sinpowslow (clamp01(track,  8994.3, 52.3), 2.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9063.3, 52.3), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track,  9176.3, 52.3), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track,  9242.3, 52.3), 1.0);
@@ -90,17 +90,17 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity *= 1.0 - 2.0 * float(track > (9695.3 + 9745.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (9902.3 + 9954.3) / 2.0);
 	intensity *= 1.0 - 2.0 * float(track > (10083.3 + 10135.3) / 2.0);
-	intensity *= 1.0 - 1.0 * float(track > (10169.3 + 10221.3) / 2.0);
+	intensity *= 1.0 - 1.0 * float(track > (10176.3 + 10204.3) / 2.0);
 
 	position.z += intensity * sin(Distance / freq);
 
-	intensity  = -1.0 * sinpowfast(clamp01(track, 80.5, 0.001), 3.0);
-	intensity -= -1.0 * sinpowslow(clamp01(track, 3527.5, 207.5), 3.0);
-	intensity -= 1.0 * sinpowslow	(clamp01(track, 3734.5, 300.5), 3.0);
+	intensity  = -1.0 * sinpowslow(clamp01(track, 80.5, 0.001), 3.0);
+	intensity -= -1.0 * sinpowfast(clamp01(track, 3527.5, 207.5), 3.0);
+	intensity -= 1.0 * sinpowslow (clamp01(track, 3734.5, 300.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 79.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.5), 3.0);
-	intensity += 1.0 * sinpowfast	(clamp01(track, 13070.5, 207.5), 3.0);
-	intensity -= 1.0 * sinpowslow	(clamp01(track, 13207.5, 300.5), 3.0);
+	intensity += 1.0 * sinpowslow	(clamp01(track, 12715.5, 492.5), 3.0);
+	intensity -= 1.0 * sinpowfast	(clamp01(track, 13207.5, 300.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 20011.5, 492.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.5), 3.0);
 	intensity += 1.0 * sinpowfast (clamp01(track, 21827.0, 22319.5), 3.0);
