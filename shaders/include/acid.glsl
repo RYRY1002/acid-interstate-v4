@@ -103,7 +103,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 13207.5, 300.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 20011.5, 492.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.5), 3.0);
-	intensity += 1.0 * sinpowfast (clamp01(track, 21827.0, 22319.5), 3.0);
+	intensity += 1.0 * sinpowslow (clamp01(track, 21827.5, 492.5), 3.0);
 
 	#include "terrainDeformation.glsl"
 

@@ -13,8 +13,8 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	x = -289.5;
 	y = -60.0 * cubesmooth(clamp01( abs(position.x) , 5.0, 55.0));
 	// These also control the Intro Terrain Sync
-	y *= sinpowslow(clamp10(track, -289.5, 5.0), 4.0);
-	x *= sinpowslow(clamp10(track, -289.5, 15.0), 4.0);
+	y *= sinpowslow(clamp10(track, -288.5, 5.0), 4.0);
+	x *= sinpowslow(clamp10(track, -288.5, 15.0), 4.0);
 	intensity = x - y;
 	intensity *= clamp01(position.x, 0.0, 1.0);
 	intensity *= sinpowfast(clamp01(track, 45.2, 5.0), 10.0);
