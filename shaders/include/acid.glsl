@@ -100,7 +100,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 79.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 12715.5, 492.5), 3.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 13207.5, 300.5), 3.0);
+	intensity -= 1.0 * sinpowfast	(clamp01(track, 13807.5, 300.5), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 20011.5, 492.5), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.5), 3.0);
 	intensity += 1.0 * sinpowslow (clamp01(track, 21827.5, 492.5), 3.0);
@@ -109,56 +109,25 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 	intensity  = sinpowsmooth(clamp01(track, 52255.7 - 800.0, 1100.0), 1.0);
   intensity -= sinpowsmooth(clamp01(track, 53882.5 - 750.0, 750.0), 1.0);
+//	intensity  = sinpowslow(clamp01(track, 2283.5, 492.0), 3.0);
+//  intensity -= sinpowsmooth(clamp01(track, 3528.0, 157.0), 1.0);
 
-	if (worldPosition.y > 126.9 && worldPosition.y < 131.1 && worldPosition.z > -2.1 && worldPosition.z < 3.1) {
-		z = 0.0;
-		y = 0.0;
+//	if (worldPosition.y > 126.9 && worldPosition.y < 131.1 && worldPosition.z > -2.1 && worldPosition.z < 3.1) {
+		//position.y -= cameraPosition.y - 128.0;
 
-		y -= sinpowslow(clamp01(track, 52255.7 - 35.0, 35.0), 2.0);
+		//rotateRad(position.xz, 25.0 * intensity);
 
-		y += (min(sinpowsharp(clamp01(track, 52406.9, 52458.5 - 52406.9), 1.0), 0.5) * 2.0);
-		y += (max(sinpowsharp(clamp01(track, 52406.9, 52458.5 - 52406.9), 1.0), 0.5) * 2.0 - 1.0);
+//		om = dot(position.x, position.x) / 4000.0 * intensity;
+//		rotate(position.yz, om);
 
-		y -= (min(sinpowsharp(clamp01(track, 52610.9, 52662.5 - 52610.9), 1.0), 0.5) * 2.0);
-		z -= (max(sinpowsharp(clamp01(track, 52610.9, 52662.5 - 52610.9), 1.0), 0.5) * 2.0 - 1.0);
+		//position.y += cameraPosition.y - 128.0;
+//	} else {
+		//position.y -= cameraPosition.y - 128.0;
 
-		z += (min(sinpowsharp(clamp01(track, 52813.7, 52865.3 - 52813.7), 1.0), 0.5) * 2.0);
-		z += (max(sinpowsharp(clamp01(track, 52813.7, 52865.3 - 52813.7), 1.0), 0.5) * 2.0 - 1.0) * 0.7;
+		//rotateRad(position.xz, 25.0 * intensity);
 
-		z -= (min(sinpowsharp(clamp01(track, 53017.7, 53068.1 - 53017.7), 1.0), 0.5) * 2.0) * 0.7;
-		y += (max(sinpowsharp(clamp01(track, 53017.7, 53068.1 - 53017.7), 1.0), 0.5) * 2.0 - 1.0);
+//		om = dot(position.x, position.x) / 4000.0 * intensity;
+//		rotate(position.yz, om);
 
-		y -= (min(sinpowsharp(clamp01(track, 53221.7, 53272.1 - 53221.7), 1.0), 0.5) * 2.0);
-		y -= (max(sinpowsharp(clamp01(track, 53221.7, 53272.1 - 53221.7), 1.0), 0.5) * 2.0 - 1.0);
-
-		y += (min(sinpowsharp(clamp01(track, 53424.5, 53476.1 - 53424.5), 1.0), 0.5) * 2.0);
-		z += (max(sinpowsharp(clamp01(track, 53424.5, 53476.1 - 53424.5), 1.0), 0.5) * 2.0 - 1.0) * 0.7;
-
-		z -= (min(sinpowsharp(clamp01(track, 53628.5, 53678.9 - 53628.5), 1.0), 0.5) * 2.0) * 0.7;
-		z -= (max(sinpowsharp(clamp01(track, 53628.5, 53678.9 - 53628.5), 1.0), 0.5) * 2.0 - 1.0);
-
-		z += min(sinpowfast(clamp01(track, 53831.3, 35.0), 2.0), 0.5) * 2.0;
-
-		// tl, br, tr, bl, br, tl, tr, bl
-		// y+ = br
-		// y- = tl
-		// z+ = bl
-		// z- = tr
-
-		position.y += 2.5 * y;
-		position.z += 2.5 * z;
-
-		rotate(position.yz, position.x * intensity * 0.05);
-
-		position.z -= 2.5 * z;
-		position.y -= 2.5 * y;
-	} else {
-		position.y -= cameraPosition.y - 128.0;
-
-		rotateRad(position.xz, 60.0 * intensity);
-
-		om = dot(position.x, position.x) / 4000.0 * intensity;
-		rotate(position.yz, om);
-
-		position.y += cameraPosition.y - 128.0;
-	}
+		//position.y += cameraPosition.y - 128.0;
+//	}
