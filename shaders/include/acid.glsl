@@ -79,7 +79,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 2.0 * sinpowsharp(clamp01(track, 20631.5, 52.0), 1.0);
 	intensity -= 2.0 * sinpowsharp(clamp01(track, 20699.5, 52.0), 1.0);
 	intensity += 2.0 * sinpowsharp(clamp01(track, 20814.5, 52.0), 1.0);
-	intensity -= 1.0 * sinpowfast (clamp01(track, 20934.5, 52.0), 2.0);
+	intensity -= 1.0 * sinpowfast (clamp01(track, 20882.5, 52.0), 2.0);
 
 
 	x = Distance;
@@ -105,34 +105,31 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 79.0), 3.0);
 	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.0), 3.0);
 	intensity += 1.0 * sinpowslow	(clamp01(track, 12715.5, 492.0), 3.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 13807.5, 300.0), 3.0);
-	intensity += 1.0 * sinpowslow	(clamp01(track, 20011.5, 492.0), 3.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.0), 3.0);
-	intensity += 1.0 * sinpowslow (clamp01(track, 21827.5, 492.0), 3.0);
+	intensity -= 0.5 * sinpowfast	(clamp01(track, 13807.5, 300.0), 3.0);
+	intensity += 0.5 * sinpowslow	(clamp01(track, 18000.5, 1000.0), 3.0);
+//	intensity -= 1.0 * sinpowfast	(clamp01(track, 20503.5, 492.0), 3.0);
 
 	#include "terrainDeformation.glsl"
 
-	intensity  = sinpowsmooth(clamp01(track, 52255.7 - 800.0, 1100.0), 1.0);
-  intensity -= sinpowsmooth(clamp01(track, 53882.5 - 750.0, 750.0), 1.0);
-//	intensity  = sinpowslow(clamp01(track, 2283.5, 492.0), 3.0);
-//  intensity -= sinpowsmooth(clamp01(track, 3528.0, 157.0), 1.0);
+	//intensity  = 1.0 * sinpowsmooth(clamp01(track, 20503.5, 200.0), 3.0);
+  //intensity -= 1.0 * sinpowfast(clamp01(track, 21827.0, 492.0), 3.0);
 
-//	if (worldPosition.y > 126.9 && worldPosition.y < 131.1 && worldPosition.z > -2.1 && worldPosition.z < 3.1) {
+	//if (worldPosition.y > 126.9 && worldPosition.y < 131.1 && worldPosition.z > -2.1 && worldPosition.z < 3.1) {
 		//position.y -= cameraPosition.y - 128.0;
 
 		//rotateRad(position.xz, 25.0 * intensity);
 
-//		om = dot(position.x, position.x) / 4000.0 * intensity;
-//		rotate(position.yz, om);
+		//om = dot(position.x, position.x) / 4000.0 * intensity;
+		//rotate(position.xy, position.y / 25);
 
 		//position.y += cameraPosition.y - 128.0;
-//	} else {
+	//} else {
 		//position.y -= cameraPosition.y - 128.0;
 
 		//rotateRad(position.xz, 25.0 * intensity);
 
-//		om = dot(position.x, position.x) / 4000.0 * intensity;
-//		rotate(position.yz, om);
+		//om = dot(position.x, position.x) / 4000.0 * intensity;
+		//rotate(position.xy, position.y / 25);
 
 		//position.y += cameraPosition.y - 128.0;
-//	}
+	//}
