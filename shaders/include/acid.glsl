@@ -113,6 +113,9 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 	intensity  = 1.0 * sinpowsmooth(clamp01(track, 50000.5, 200.0), 3.0);
 	intensity -= 1.0 * sinpowfast(clamp01(track, 50001.0, 492.0), 3.0);
 
+	// Unused Terrain Deformation for P5 (Please note that this was never finished and is very broken)
+	// Disable lines 49 and 50 in terrainDeformation.glsl and enable lines 119 to 140 in acid.glsl to use it
+
 	//intensity  = 1.0 * sinpowsmooth(clamp01(track, 20503.5, 200.0), 3.0);
   //intensity -= 1.0 * sinpowfast(clamp01(track, 21827.0, 492.0), 3.0);
 
@@ -122,7 +125,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 		//rotateRad(position.xz, 25.0 * intensity);
 
 		//om = dot(position.x, position.x) / 4000.0 * intensity;
-		//rotate(position.xy, position.y / 25);
+		//rotate(position.xy, om);
 
 		//position.y += cameraPosition.y - 128.0;
 	//} else {
@@ -131,7 +134,7 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 		//rotateRad(position.xz, 25.0 * intensity);
 
 		//om = dot(position.x, position.x) / 4000.0 * intensity;
-		//rotate(position.xy, position.y / 25);
+		//rotate(position.xy, om);
 
 		//position.y += cameraPosition.y - 128.0;
 	//}
