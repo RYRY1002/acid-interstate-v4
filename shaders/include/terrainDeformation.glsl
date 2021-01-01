@@ -7,6 +7,8 @@ deformationController -= 1.0 * sinpowfast(clamp01(track, 2275.5, 984.0), 3.0);
 deformationController += 1.0 * sinpowfast(clamp01(track, 3552.5, 157.0), 3.0);
 deformationController -= 1.0 * sinpowslow(clamp01(track, 13207.5, 492.0), 3.0);
 deformationController += 1.0 * sinpowfast(clamp01(track, 14675.5, 820.0), 3.0);
+deformationController -= 0.325 * sinpowslow(clamp01(track, 18000.5, 1000.0), 3.0);
+deformationController += 0.675 * sinpowslow(clamp01(track, 20011.5, 492.0), 3.0);
 
 // Standard Deformation
 om = intensity * sin(Distance * sin(time * speed / 256.0) / 5000);
@@ -22,7 +24,7 @@ position.y += 2.5 * customDeformationP1;
 
 // P3 Custom Deformation
 float customDeformationP3 = 0.0;
-customDeformationP3  = 1.0 * sinpowslow(clamp01(track, 10314.5, 492.0), 3.0);
+customDeformationP3  = 1.0 * sinpowfast(clamp01(track, 10314.5, 492.0), 3.0);
 customDeformationP3 -= 1.0 * sinpowslow(clamp01(track, 12715.5, 492.0), 3.0);
 rotate(position.xz, position.x / 200.0 * customDeformationP3);
 rotate(position.xz, radians(-45.0) * customDeformationP3);
@@ -47,5 +49,5 @@ float customDeformationP5 = 0.0;
 customDeformationP5  = 1.0 * sinpowsmooth(clamp01(track, 20503.5, 200.0), 3.0);
 customDeformationP5 -= 1.0 * sinpowfast(clamp01(track, 21827.0, 492.0), 3.0);
 rotate(position.xy, abs(position.x) / 500.0 * customDeformationP5);
-rotate(position.zy, abs(position.z) / 50.0 * customDeformationP5);
+rotate(position.zy, abs(position.z) / 87.5 * customDeformationP5);
 rotate(position.zx, position.x / 200.0 * customDeformationP5);
