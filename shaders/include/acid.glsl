@@ -99,14 +99,15 @@ void acid(inout vec3 position, in vec3 worldPosition) {
 
 	position.z += intensity * sin(Distance / freq);
 
-	intensity  = -1.0 * sinpowslow(clamp01(track, 80.5, 0.001), 3.0);
-	intensity -= -1.0 * sinpowfast(clamp01(track, 3527.5, 207.0), 3.0);
-	intensity -= 1.0 * sinpowslow (clamp01(track, 3734.5, 300.0), 3.0);
-	intensity += 1.0 * sinpowslow	(clamp01(track, 8966.5, 79.0), 3.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 9046.5, 492.0), 3.0);
-	intensity += 1.0 * sinpowslow	(clamp01(track, 12715.5, 492.0), 3.0);
-	intensity -= 1.0 * sinpowfast	(clamp01(track, 13807.5, 300.0), 3.0);
-	intensity += 1.0 * sinpowslow	(clamp01(track, 18000.5, 1000.0), 3.0);
+	intensity  = -1.0 * sinpowslow (clamp01(track, 80.5, 0.001), 3.0);
+	intensity -= -1.0 * sinpowfast (clamp01(track, 3527.5, 207.0), 3.0);
+	intensity -= 1.0 * sinpowslow  (clamp01(track, 3734.5, 300.0), 3.0);
+	intensity += 1.0 * sinpowslow	 (clamp01(track, 8966.5, 79.0), 3.0);
+	intensity -= 1.0 * sinpowfast	 (clamp01(track, 9046.5, 492.0), 3.0);
+	intensity += 1.0 * sinpowslow	 (clamp01(track, 12715.5, 492.0), 3.0);
+	intensity -= 1.0 * sinpowfast	 (clamp01(track, 13807.5, 300.0), 3.0);
+	intensity += 0.675 * sinpowslow(clamp01(track, 18000.5, 1000.0), 3.0);
+	intensity += 0.325 * sinpowslow(clamp01(track, 20011.5, 492.0), 3.0);
 
 	#include "terrainDeformation.glsl"
 
