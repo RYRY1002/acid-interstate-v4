@@ -7,8 +7,6 @@ deformationController -= 1.0 * sinpowfast(clamp01(track, 2275.5, 984.0), 3.0);
 deformationController += 1.0 * sinpowfast(clamp01(track, 3552.5, 157.0), 3.0);
 deformationController -= 1.0 * sinpowslow(clamp01(track, 13207.5, 492.0), 3.0);
 deformationController += 1.0 * sinpowfast(clamp01(track, 14675.5, 820.0), 3.0);
-deformationController -= 0.325 * sinpowslow(clamp01(track, 18000.5, 1000.0), 3.0);
-deformationController += 0.675 * sinpowslow(clamp01(track, 20011.5, 492.0), 3.0);
 
 // Standard Deformation
 om = intensity * sin(Distance * sin(time * speed / 256.0) / 5000);
