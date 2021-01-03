@@ -19,11 +19,12 @@ customDeformationP1 -= 1.0 * sinpowfast(clamp01(track, 3552.5, 157.0), 3.0);
 position.y -= 2.5 * customDeformationP1;
 rotate(position.zy, position.x * customDeformationP1 * 0.05);
 position.y += 2.5 * customDeformationP1;
+rotate(position.yx, radians(0.25) * customDeformationP1);
 
 // P3 Custom Deformation
 float customDeformationP3 = 0.0;
 customDeformationP3  = 1.0 * sinpowfast(clamp01(track, 10314.5, 492.0), 3.0);
-customDeformationP3 -= 1.0 * sinpowslow(clamp01(track, 12715.5, 492.0), 3.0);
+customDeformationP3 -= 1.0 * sinpowslow(clamp01(track, 12674.5, 492.0), 3.0);
 rotate(position.xz, position.x / 200.0 * customDeformationP3);
 rotate(position.xz, radians(-45.0) * customDeformationP3);
 
@@ -34,6 +35,7 @@ customDeformationP4_1 -= 1.0 * sinpowsmooth(clamp01(track, 14675.5, 800.0), 3.0)
 position.y += -2.5 * customDeformationP4_1;
 rotate(position.yz, position.x * customDeformationP4_1 * 0.05);
 position.y -= -2.5 * customDeformationP4_1;
+rotate(position.yx, radians(0.25) * customDeformationP4_1);
 
 // P4_2 Custom Deformation
 float customDeformationP4_2 = 0.0;
