@@ -54,7 +54,7 @@ Hey, site owners, I better not see this shader and/or video hosted on a site lik
 
 ### 5. Legal Stuff
 
-5a. This agreement shall be generally referred to as the 'Acid Interstate V2 License'. The devs are free to change this license at any point in time without further notice. You can always find the latest version at https://github.com/RYRY1002/acid-interstate-v2/blob/main/LICENSE.md
+5a. This agreement shall be generally referred to as the 'Acid Interstate V4 License'. The devs are free to change this license at any point in time without further notice. You can always find the latest version at https://github.com/RYRY1002/acid-interstate-v4/blob/main/LICENSE.md
 
 5b. Legal domicile for any disputes arising from or in connection with our shader and/or video or its use is Sydney, Australia. Each clause of this agreement is subject to applicable law and only to be applied to the extent is permitted by applicable law.
 
@@ -77,4 +77,4 @@ SOFTWARE.
 ### Reference to our shader and video examples
 _(Go ahead, copy and paste them.)_
 
-This video features a shader called "Acid Interstate V2 Shader" made by RYRY1002 and BruceKnowsHow. You can download it from https://github.com/RYRY1002/acid-interstate-v2/releases/. All credit for the shader goes to them.
+This video features a shader called "Acid Interstate V4 Shader" made by RYRY1002 and BruceKnowsHow. You can download it from https://github.com/RYRY1002/acid-interstate-v2/releases/. All credit for the shader goes to them.

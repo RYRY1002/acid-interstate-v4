@@ -1,6 +1,6 @@
-# Acid Interstate V2 Repository
+# Acid Interstate V4 Repository
 
-This is the repository for my video, Acid Interstate V2.
+This is the repository for my video, Acid Interstate V4.
 
 Make sure to follow our license when copying, modifying, merging, publishing and/or distributing our work.
 
@@ -10,7 +10,7 @@ This shader is for use with the Optifine Mod. This shader will not work correctl
 This shader was orignally made by MiningGodBruce, and modified heavily by RYRY1002.
 
 Make sure to follow our license when copying, modifying, merging, publishing and/or distributing our work.
-(See our license at https://github.com/RYRY1002/acid-interstate-v2/blob/main/LICENSE)
+(See our license at https://github.com/RYRY1002/acid-interstate-v4/blob/main/LICENSE)
 
 This shader is super broken, and should not be used for normal play.
 I'm not going to help you if you can't get this shader to work, because I don't care.
