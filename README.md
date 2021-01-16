@@ -19,31 +19,15 @@ If you want to make a video using this shader, go for it!
 I'm not going to tell you how, but I'm happy for you to make something with it.
 
 Thanks to [MiningGodBruce](https://www.youtube.com/user/MiningGodBruce) (BruceKnowsHow)
-For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video. 
+For helping me fix some bugs, and creating the shader that this shader is based on and inspire me to continue developing this video.
 
 I'd appreciate if you shared the original video, it's cool when people enjoy it.
 
 Also check out my stuff, I'd appreciate it.
 https://links.riley.technology/
 
-## WIP Videos
+## Video link
 
-[WIP 10](https://youtu.be/fqf0244_Jg4)
+https://youtu.be/Dfd5xpEHLII
 
-[WIP 9](https://youtu.be/i8dnCp4TgQw)
-
-[WIP 8](https://youtu.be/Zm0igsCsk78)
-
-[WIP 7](https://youtu.be/x8l6Ckb95O0)
-
-[WIP 6](https://youtu.be/lY2fFAiAAP8)
-
-[WIP 5](https://youtu.be/KfMLrGUDqCI)
-
-[WIP 4](https://youtu.be/JAcAGXXNZ-I)
-
-[WIP 3](https://youtu.be/XyrxbawyBh0)
-
-[WIP 2](https://youtu.be/GH9BNJ6fVgE)
-
-[WIP 1](https://youtu.be/2ls9yOUEgXs)
+[Thumbnail](https://media.discordapp.net/attachments/707908516567973898/799861220907810826/Thumbnail.png)

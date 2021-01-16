@@ -38,7 +38,7 @@ Hey, site owners, I better not see this shader and/or video hosted on a site lik
 
 3a. You may freely publish Minecraft footage with our shader installed given that you do not infringe other parts of our license or applicable law.
 
-3b. If you release a video or a series of videos that features our shader and/or video as the main content (e.g. Top 5 Shaders List, Minecraft on Acid, etc.), you must provide a reference to our shader _and_ video in the description of your video (or every video if it is in a series) with a link to this video: <link> and a link to the creators: [RYRY1002](https://links.riley.technology) and [BruceKnowsHow](https://www.youtube.com/user/MiningGodBruce). You can find some examples of a reference to our shader and video at the bottom of this document.
+3b. If you release a video or a series of videos that features our shader and/or video as the main content (e.g. Top 5 Shaders List, Minecraft on Acid, etc.), you must provide a reference to our shader _and_ video in the description of your video (or every video if it is in a series) with a link to this video: [https://youtu.be/Dfd5xpEHLII](https://youtu.be/Dfd5xpEHLII) and a link to the creators: [RYRY1002](https://links.riley.technology) and [BruceKnowsHow](https://www.youtube.com/user/MiningGodBruce). You can find some examples of a reference to our shader and video at the bottom of this document.
 
 3c. If you release a video that contains a modified version of our shader, you are free to publish it, _(As long as you give credit as described in 3b)_ but you must not give a download for the modified shader, and you must note in the reference to the shader that it has been modified from the original.
 
@@ -62,7 +62,7 @@ Hey, site owners, I better not see this shader and/or video hosted on a site lik
 
 5d. By installing, downloading, storing a copy of or using our shader and/or video you agree to all of the terms and conditions of our license. They can and will, if deemed neccessary by the devs, be enforced by going to law.
 
-5e. For further questions concerning our shader and/or video, or this license please contact us on GitHub via the issues tab _(https://github.com/RYRY1002/acid-interstate-v2/issues)_ or directly contact [RYRY1002](https://links.riley.technology/).
+5e. For further questions concerning our shader and/or video, or this license please contact us on GitHub via the issues tab _(https://github.com/RYRY1002/acid-interstate-v4/issues)_ or directly contact [RYRY1002](https://links.riley.technology/).
 
 ### 6. Warranty Notice
 
@@ -77,4 +77,4 @@ SOFTWARE.
 ### Reference to our shader and video examples
 _(Go ahead, copy and paste them.)_
 
-This video features a shader called "Acid Interstate V4 Shader" made by RYRY1002 and BruceKnowsHow. You can download it from https://github.com/RYRY1002/acid-interstate-v2/releases/. All credit for the shader goes to them.
+This video features a shader called "Acid Interstate V4 Shader" made by RYRY1002 and BruceKnowsHow. You can download it from https://github.com/RYRY1002/acid-interstate-v4/releases/. All credit for the shader goes to them.
