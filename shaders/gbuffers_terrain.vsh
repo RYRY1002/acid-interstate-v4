@@ -103,10 +103,10 @@ const float sunPathRotation = -40.0;
 const float PI = 3.1415926535;
 const float rad = 0.01745329;
 
-const float gateTop		= 130.0;
-const float gateBottom	= 126.0;
-const float gateLeft	= -1.5;
-const float gateRight	= 2.5;
+const float gateTop		= 131.0;
+const float gateBottom	= 127.0;
+const float gateLeft	= -1.0;
+const float gateRight	= 2.0;
 
 
 vec2 GetLightmap() {							//Gets the lightmap from the default lighting engine. First channel is torch lightmap, second channel is sky lightmap.
