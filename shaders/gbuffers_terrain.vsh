@@ -104,7 +104,7 @@ const float PI = 3.1415926535;
 const float rad = 0.01745329;
 
 const float gateTop		= 131.0;
-const float gateBottom	= 127.0;
+const float gateBottom	= 128.0;
 const float gateLeft	= -1.0;
 const float gateRight	= 2.0;
 

@@ -231,10 +231,10 @@ struct plane {
 	float dist;
 };
 
-const float gateTop		= 129.0;
-const float gateBottom	= 126.0;
-const float gateLeft	= -0.5;
-const float gateRight	= 1.5;
+const float gateTop		= 131.0;
+const float gateBottom	= 127.0;
+const float gateLeft	= -1.0;
+const float gateRight	= 2.0;
 
 float planeDistance(in vec3 point, in vec3 p0, in vec3 p1, in vec3 p2) {
 	vec3 normal = normalize(cross(p1 - p0, p2 - p0));
@@ -247,7 +247,7 @@ float frustumCheck(in float x) {		//returns true terrain inside the constructed 
 		return 0.0;
 
 	float topDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topRight,		topLeft);
-	float bottomDistance	= planeDistance(playerSpacePosition.xyz, vec3(0.0), bottomRight,	bottomLeft);
+	float bottomDistance	= planeDistance(playerSpacePosition.xyz, vec3(1.0), bottomRight,	bottomLeft);
 	float leftDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topLeft,		bottomLeft);
 	float rightDistance		= planeDistance(playerSpacePosition.xyz, vec3(0.0), topRight,		bottomRight);
 
